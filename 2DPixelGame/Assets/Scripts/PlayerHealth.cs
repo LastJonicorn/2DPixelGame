@@ -40,8 +40,10 @@ public class PlayerHealth : MonoBehaviour
 
     void Die()
     {
-        var currentScene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(currentScene.name);
+        FindAnyObjectByType<DeathScreen>().PlayerDied();
+
+        //var currentScene = SceneManager.GetActiveScene();
+        //SceneManager.LoadScene(currentScene.name);
 
     }
 }
