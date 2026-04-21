@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour
     public float runSpeed = 40f;
     float horizontalMove = 0f;
     bool jump = false;
-    bool crouch = false;
+    public bool crouch = false;
     public Animator animator;
     public Rigidbody2D rb;
 
@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("IsJumping", true);
         }
 
-        if (Input.GetButtonDown("Crouch"))
+        if (Input.GetButton("Crouch"))
         {
             crouch = true;
         } else if (Input.GetButtonUp("Crouch"))

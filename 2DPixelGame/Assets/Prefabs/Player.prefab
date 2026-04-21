@@ -190,7 +190,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 36251ea91bbe60a40ba8f809ac921c74, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -236,7 +236,7 @@ CircleCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 36251ea91bbe60a40ba8f809ac921c74, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -284,13 +284,37 @@ MonoBehaviour:
   m_GroundCheck: {fileID: 8388847209766422622}
   m_CeilingCheck: {fileID: 1198185968121922195}
   m_CrouchDisableCollider: {fileID: 3540499151280290062}
-  m_AirSpeedMultiplier: 0.1
+  m_AirSpeedMultiplier: 1
   OnLandEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8498817643388327641}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnLanding
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   OnCrouchEvent:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8498817643388327641}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: OnCrouching
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &8498817643388327641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,6 +329,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   controller: {fileID: 58782591844698707}
   runSpeed: 40
+  crouch: 0
   animator: {fileID: 1903864168718515946}
   rb: {fileID: 9123116214745638321}
 --- !u!1 &5379638442450680416
