@@ -10,14 +10,30 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     public Rigidbody2D rb;
 
+    public float dashSpeed = 20f;
+    public float dashTime = 0.15f;
+    public float dashCooldown = 0.8f;
+
+    private bool isDashing;
+    private float dashTimeLeft;
+    private float lastDashTime;
+    private float dashDirection;
+
+    private float lastMoveDirection = 1f;
+
     void Update()
     {
-        PauseMenu pauseMenu = FindFirstObjectByType<PauseMenu>();
+        PauseMenu pauseMenu = FindAnyObjectByType<PauseMenu>();
         if (pauseMenu != null && pauseMenu.GameIsPaused) return;
 
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
+
+        if (Mathf.Abs(horizontalMove) > 0.01f)
+        {
+            lastMoveDirection = Mathf.Sign(horizontalMove);
+        }
 
         if (Input.GetButtonDown("Jump"))
         {
@@ -31,6 +47,18 @@ public class PlayerMovement : MonoBehaviour
         } else if (Input.GetButtonUp("Crouch"))
         {
             crouch = false;
+        }
+
+        if (Input.GetButton("Dash") && Time.time >= lastDashTime + dashCooldown)
+        {
+            isDashing = true;
+            dashTimeLeft = dashTime;
+            lastDashTime = Time.time;
+
+            dashDirection = lastMoveDirection; 
+            if (dashDirection == 0) dashDirection = transform.localScale.x > 0 ? 1 : -1;
+
+            animator.SetTrigger("Dash");
         }
 
         UpdateVerticalAnimations();
@@ -72,6 +100,20 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (isDashing)
+        {
+            rb.linearVelocity = new Vector2(dashDirection * dashSpeed, 0f);
+
+            dashTimeLeft -= Time.fixedDeltaTime;
+
+            if (dashTimeLeft <= 0f)
+            {
+                isDashing = false;
+            }
+
+            return; // estää normaalin movementin dashin aikana
+        }
+
         controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
         jump = false;
     }

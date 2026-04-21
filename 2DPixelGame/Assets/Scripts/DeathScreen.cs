@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class DeathScreen : MonoBehaviour
 {
@@ -7,12 +8,16 @@ public class DeathScreen : MonoBehaviour
 
     private bool isDead = false;
 
+    public GameObject firstButton;
+
     public void PlayerDied()
     {
         if (isDead) return;
 
         isDead = true;
         deathPanel.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(firstButton);
 
         Time.timeScale = 0f;
     }
