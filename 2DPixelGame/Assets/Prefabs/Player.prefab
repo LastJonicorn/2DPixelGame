@@ -47,6 +47,8 @@ GameObject:
   - component: {fileID: 3540499151280290062}
   - component: {fileID: 58782591844698707}
   - component: {fileID: 8498817643388327641}
+  - component: {fileID: 7637798613823301714}
+  - component: {fileID: 3729946935103631639}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -126,7 +128,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.24, y: 0.32}
+  m_Size: {x: 1.5, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -219,7 +221,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.5, y: 2}
-    newSize: {x: 0.24, y: 0.32}
+    newSize: {x: 1.5, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -276,7 +278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   m_JumpForce: 400
   m_CrouchSpeed: 0.36
-  m_MovementSmoothing: 0.05
+  m_MovementSmoothing: 0.03
   m_AirControl: 1
   m_WhatIsGround:
     serializedVersion: 2
@@ -332,6 +334,41 @@ MonoBehaviour:
   crouch: 0
   animator: {fileID: 1903864168718515946}
   rb: {fileID: 9123116214745638321}
+--- !u!114 &7637798613823301714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602821586019320682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2630d60893bccf4ba92f94e0b048c89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
+  maxHealth: 100
+  currentHealth: 0
+  healthBar: {fileID: 0}
+  animator: {fileID: 1903864168718515946}
+--- !u!114 &3729946935103631639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602821586019320682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b4132bb20821e64cafbbc6f71dbad5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerCombat
+  animator: {fileID: 1903864168718515946}
+  attackPoint: {fileID: 8368321508490750428}
+  attackRange: 0.74
+  enemyLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  attackDamage: 40
 --- !u!1 &5379638442450680416
 GameObject:
   m_ObjectHideFlags: 0
@@ -373,7 +410,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8368321508490750428}
   m_Layer: 3
-  m_Name: GameObject (2)
+  m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -388,7 +425,7 @@ Transform:
   m_GameObject: {fileID: 7007563056468710388}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.85, y: 0, z: 0}
+  m_LocalPosition: {x: -1.303, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

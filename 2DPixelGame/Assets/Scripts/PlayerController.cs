@@ -76,8 +76,10 @@ public class PlayerController : MonoBehaviour
         // Only control the player if grounded or airControl is turned on
         if (m_Grounded || m_AirControl)
         {
-            // If crouching
-            if (crouch)
+            // CROUCH LOGIC (vain maassa)
+            bool isCrouching = crouch && m_Grounded;
+
+            if (isCrouching)
             {
                 if (!m_wasCrouching)
                 {
@@ -85,16 +87,13 @@ public class PlayerController : MonoBehaviour
                     OnCrouchEvent.Invoke(true);
                 }
 
-                // Reduce the speed by the crouchSpeed multiplier
-                move *= m_CrouchSpeed;
-
-                // Disable one of the colliders when crouching
                 if (m_CrouchDisableCollider != null)
                     m_CrouchDisableCollider.enabled = false;
+
+                move *= m_CrouchSpeed;
             }
             else
             {
-                // Enable the collider when not crouching
                 if (m_CrouchDisableCollider != null)
                     m_CrouchDisableCollider.enabled = true;
 

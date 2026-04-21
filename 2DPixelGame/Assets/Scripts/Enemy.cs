@@ -2,16 +2,17 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [Header("Vihollisen elämä")]
+    EnemyPatrol patrol;
+
+    [Header("Enemy's Life")]
     public Animator animator;
     public int maxHealth = 100;
     public int currentHealth;
 
-    [Header("Vihollinen lyö")]
+    [Header("Enemy Attack")]
     public Transform attackPoint;
     public float attackRange = 0.1f;
     public LayerMask playerLayer;
-    public Transform playerTransform;
     public int attackDamage = 20;
     public float attackCooldown = 2f;
     private float lastAttackTime = -Mathf.Infinity;
@@ -25,11 +26,12 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         currentHealth = maxHealth;
+        patrol = GetComponent<EnemyPatrol>();
     }
 
     private void Update()
     {
-        if (Time.time >= lastAttackTime + attackCooldown && playerTransform != null)
+        if (Time.time >= lastAttackTime + attackCooldown)
         {
             TryAttack();
         }
@@ -60,7 +62,7 @@ public class Enemy : MonoBehaviour
     {
         currentHealth -= damage;
 
-        audioSource.PlayOneShot(hurtSound);
+        //audioSource.PlayOneShot(hurtSound);
         //Näytä vahingoittumisanimaatio
         animator.SetTrigger("Hurt");
 
@@ -73,7 +75,19 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         animator.SetBool("IsDead", true);
-        audioSource.PlayOneShot(deathSound);
+        //audioSource.PlayOneShot(deathSound);
+
+        // Pysäytä liike
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        rb.linearVelocity = Vector2.zero;
+        rb.bodyType = RigidbodyType2D.Static;
+
+        // Poista patrol
+        EnemyPatrol patrol = GetComponent<EnemyPatrol>();
+        if (patrol != null)
+        {
+            patrol.enabled = false;
+        }
 
         GetComponent<Collider2D>().enabled = false;
         //Destroy(gameObject);
