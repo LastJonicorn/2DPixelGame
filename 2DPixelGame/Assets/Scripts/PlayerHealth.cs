@@ -11,7 +11,9 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-        currentHealth = maxHealth;
+        //currentHealth = maxHealth;
+        currentHealth = GameManager.instance.playerHealth;
+
     }
 
     void Update()
@@ -24,11 +26,14 @@ public class PlayerHealth : MonoBehaviour
         currentHealth += health;
 
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
+
+        GameManager.instance.playerHealth = currentHealth;
     }
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        GameManager.instance.playerHealth = currentHealth;
 
         animator.SetTrigger("TakeDamage");
 

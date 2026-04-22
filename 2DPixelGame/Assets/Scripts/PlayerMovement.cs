@@ -161,7 +161,7 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position = new Vector3(ladderX, transform.position.y, transform.position.z);
 
-            rb.gravityScale = 1f;
+            //rb.gravityScale = 1f;
 
             rb.linearVelocity = new Vector2(0, verticalMove * climbSpeed);
 
@@ -169,14 +169,14 @@ public class PlayerMovement : MonoBehaviour
             if (jump)
             {
                 isClimbing = false;
-                rb.gravityScale = 1f;
+                //rb.gravityScale = 1f;
             }
 
             return;
         }
         else
         {
-            rb.gravityScale = 1f;
+            //rb.gravityScale = 1f;
         }
 
         controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
