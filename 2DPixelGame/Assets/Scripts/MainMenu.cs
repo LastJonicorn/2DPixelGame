@@ -1,11 +1,18 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class MainMenu : MonoBehaviour
 {
 
     public GameObject panel;
     public GameObject settingsPanel;
+    public GameObject firstButton;
+
+    private void Start()
+    {
+        EventSystem.current.SetSelectedGameObject(firstButton);
+    }
 
     public void PlayGame()
     {
