@@ -1,10 +1,12 @@
 using UnityEngine;
+using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class PlayerMovement : MonoBehaviour
 {
     public PlayerController controller;
     public float runSpeed = 40f;
     float horizontalMove = 0f;
+    float verticalMove = 0f;
     bool jump = false;
     public bool crouch = false;
     public Animator animator;
@@ -21,12 +23,18 @@ public class PlayerMovement : MonoBehaviour
 
     private float lastMoveDirection = 1f;
 
+    private bool isInLadder = false;
+    public bool isClimbing = false;
+    private float climbSpeed = 5f;
+    private float ladderX;
+
     void Update()
     {
         PauseMenu pauseMenu = FindAnyObjectByType<PauseMenu>();
         if (pauseMenu != null && pauseMenu.GameIsPaused) return;
 
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
+        verticalMove = Input.GetAxisRaw("Vertical");
 
         animator.SetFloat("Speed", Mathf.Abs(horizontalMove));
 
@@ -49,6 +57,24 @@ public class PlayerMovement : MonoBehaviour
             crouch = false;
         }
 
+        // Aloita kiipe‰minen vain jos ollaan tikapuissa JA painetaan ylˆs/alas
+        if (isInLadder && Mathf.Abs(verticalMove) > 0.5f)
+        {
+            isClimbing = true;
+        }
+
+        if (isClimbing)
+        {
+            horizontalMove = 0;
+        }
+
+        // Poistu tikapuilta jos ei en‰‰ paineta ylˆs/alas
+        if (isClimbing && Mathf.Abs(verticalMove) < 0.5f)
+        {
+            rb.linearVelocity = new Vector2(0, rb.linearVelocity.y); // pys‰yt‰ climb
+            isClimbing = false;
+        }
+
         if (Input.GetButton("Dash") && Time.time >= lastDashTime + dashCooldown)
         {
             isDashing = true;
@@ -62,6 +88,23 @@ public class PlayerMovement : MonoBehaviour
         }
 
         UpdateVerticalAnimations();
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ladder"))
+        {
+            isInLadder = true;
+            ladderX = collision.bounds.center.x;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Ladder"))
+        {
+            isInLadder = false;
+            isClimbing = false;
+        }
     }
 
     public void OnLanding()
@@ -112,6 +155,28 @@ public class PlayerMovement : MonoBehaviour
             }
 
             return; // est‰‰ normaalin movementin dashin aikana
+        }
+
+        if (isClimbing)
+        {
+            transform.position = new Vector3(ladderX, transform.position.y, transform.position.z);
+
+            rb.gravityScale = 1f;
+
+            rb.linearVelocity = new Vector2(0, verticalMove * climbSpeed);
+
+            // Poistu jos hyp‰t‰‰n
+            if (jump)
+            {
+                isClimbing = false;
+                rb.gravityScale = 1f;
+            }
+
+            return;
+        }
+        else
+        {
+            rb.gravityScale = 1f;
         }
 
         controller.Move(horizontalMove * Time.fixedDeltaTime, crouch, jump);
