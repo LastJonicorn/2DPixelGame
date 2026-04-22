@@ -13,7 +13,8 @@ public class LevelChange : MonoBehaviour
     {
         if (playerInZone && Input.GetButtonDown("Submit"))
         {
-            SceneManager.LoadScene(sceneIndex);
+            FadeManager.instance.FadeToScene(sceneIndex);
+            //SceneManager.LoadScene(sceneIndex);
         }
     }
 

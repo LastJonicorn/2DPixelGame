@@ -16,7 +16,8 @@ public class MainMenu : MonoBehaviour
 
     public void PlayGame()
     {
-        SceneManager.LoadScene(1);
+        FadeManager.instance.FadeToScene(1);
+        //.LoadScene(1);
     }
 
     public void OpenPanel()
