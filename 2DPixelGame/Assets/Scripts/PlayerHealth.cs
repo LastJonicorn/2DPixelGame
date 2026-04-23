@@ -11,9 +11,12 @@ public class PlayerHealth : MonoBehaviour
 
     void Start()
     {
-        //currentHealth = maxHealth;
         currentHealth = GameManager.instance.playerHealth;
 
+        if (healthBar == null)
+        {
+            healthBar = GameObject.FindWithTag("HealthBar").GetComponent<Image>();
+        }
     }
 
     void Update()
@@ -45,6 +48,8 @@ public class PlayerHealth : MonoBehaviour
 
     void Die()
     {
+        GameManager.instance.playerHealth = GameManager.instance.maxHealth;
+
         FindAnyObjectByType<DeathScreen>().PlayerDied();
 
         //var currentScene = SceneManager.GetActiveScene();

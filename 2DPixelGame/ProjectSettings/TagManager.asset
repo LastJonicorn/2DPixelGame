@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 3
   tags:
   - Ladder
+  - PlayerSpawn
+  - HealthBar
   layers:
   - Default
   - TransparentFX
@@ -51,11 +53,17 @@ TagManager:
   - name: Enemy
     uniqueID: 1659189459
     locked: 0
+  - name: Top
+    uniqueID: 2972084661
+    locked: 0
   - name: Player
     uniqueID: 3220939285
     locked: 0
-  - name: Top
-    uniqueID: 2972084661
+  - name: Bonfire
+    uniqueID: 3182693413
+    locked: 0
+  - name: Collectible
+    uniqueID: 1326383767
     locked: 0
   m_RenderingLayers:
   - Default

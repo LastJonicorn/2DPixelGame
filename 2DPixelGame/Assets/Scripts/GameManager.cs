@@ -12,6 +12,10 @@ public class GameManager : MonoBehaviour
     public int playerMana = 0;
     public int maxMana = 0;
 
+    public Vector3 respawnPosition;
+    public bool hasCheckpoint = false;
+    public Checkpoint currentCheckpoint;
+
     private void Awake()
     {
         if (instance != null && instance != this)
