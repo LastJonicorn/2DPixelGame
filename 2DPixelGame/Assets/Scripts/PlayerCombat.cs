@@ -11,7 +11,7 @@ public class PlayerCombat : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PauseMenu pauseMenu = FindFirstObjectByType<PauseMenu>();
+        PauseMenu pauseMenu = FindAnyObjectByType<PauseMenu>();
         if (pauseMenu != null && pauseMenu.GameIsPaused) return;
 
         if (Input.GetButtonDown("Attack"))

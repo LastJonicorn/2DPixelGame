@@ -62,7 +62,7 @@ public class Enemy : MonoBehaviour
     {
         currentHealth -= damage;
 
-        //audioSource.PlayOneShot(hurtSound);
+        audioSource.PlayOneShot(hurtSound);
         //Näytä vahingoittumisanimaatio
         animator.SetTrigger("Hurt");
 
@@ -75,7 +75,7 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         animator.SetBool("IsDead", true);
-        //audioSource.PlayOneShot(deathSound);
+        audioSource.PlayOneShot(deathSound);
 
         // Pysäytä liike
         Rigidbody2D rb = GetComponent<Rigidbody2D>();

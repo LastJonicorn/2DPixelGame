@@ -218,8 +218,8 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0.006764218, y: -0.13002457}
-  m_Size: {x: 0.8970636, y: 0.6114441}
+  m_Offset: {x: 0.0067642243, y: -0.07918007}
+  m_Size: {x: 0.89706385, y: 0.713134}
   m_Direction: 1
 --- !u!50 &2082411930799764908
 Rigidbody2D:
@@ -261,8 +261,8 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
+  m_Volume: 0.1
+  m_Pitch: 1.04
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -367,9 +367,9 @@ MonoBehaviour:
     m_Bits: 8
   attackDamage: 20
   attackCooldown: 2
-  audioSource: {fileID: 0}
-  hurtSound: {fileID: 0}
-  deathSound: {fileID: 0}
+  audioSource: {fileID: 723370308739529584}
+  hurtSound: {fileID: 8300000, guid: 008e4217ac6a4cb48976c524b0072a00, type: 3}
+  deathSound: {fileID: 8300000, guid: b623acc8b1f2ea84082d8ef5f3cfd921, type: 3}
 --- !u!114 &3323819278177566560
 MonoBehaviour:
   m_ObjectHideFlags: 0
