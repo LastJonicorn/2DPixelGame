@@ -3,13 +3,15 @@ using UnityEngine;
 public class Checkpoint : MonoBehaviour
 {
     public GameObject fire; // tämä on se tuli child-object
+    private string sceneName;
 
     void Start()
     {
+        sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+
         if (fire != null)
             fire.SetActive(false);
 
-        // Jos tämä checkpoint on current → sytytä tuli
         if (GameManager.instance.currentCheckpoint == this)
         {
             TurnOnFire();
@@ -39,6 +41,10 @@ public class Checkpoint : MonoBehaviour
 
         GameManager.instance.respawnPosition = transform.position;
         GameManager.instance.hasCheckpoint = true;
+
+        GameManager.instance.lastCheckpointScene = sceneName;
+
+        SaveSystem.SaveGame();
 
         TurnOnFire();
     }

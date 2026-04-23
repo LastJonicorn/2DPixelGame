@@ -61,6 +61,7 @@ public class PlayerMovement : MonoBehaviour
         if (isInLadder && Mathf.Abs(verticalMove) > 0.5f)
         {
             isClimbing = true;
+            animator.SetBool("IsClimbing", true);
         }
 
         if (isClimbing)
@@ -73,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.linearVelocity = new Vector2(0, rb.linearVelocity.y); // pysäytä climb
             isClimbing = false;
+            animator.SetBool("IsClimbing", false);
         }
 
         if (Input.GetButton("Dash") && Time.time >= lastDashTime + dashCooldown)
@@ -104,6 +106,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isInLadder = false;
             isClimbing = false;
+            animator.SetBool("IsClimbing", false);
         }
     }
 

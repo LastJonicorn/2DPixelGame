@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     public bool hasCheckpoint = false;
     public Checkpoint currentCheckpoint;
     private string lastSceneName;
+    public string lastCheckpointScene;
+
+    private bool loadingFromSave = false;
 
     private void Awake()
     {
@@ -46,16 +49,57 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // Jos scene on sama → EI resetoida (kuolema)
+        // 🔥 ÄLÄ RESETOI jos tullaan savesta
+        if (loadingFromSave)
+        {
+            loadingFromSave = false;
+            lastSceneName = scene.name;
+            return;
+        }
+
+        // Jos sama scene → kuolema → ei reset
         if (scene.name == lastSceneName)
         {
             return;
         }
 
-        // Uusi scene → resetoi checkpoint
+        // 🔥 ÄLÄ resetoi jos ollaan checkpointin scenessä
+        if (scene.name == lastCheckpointScene)
+        {
+            lastSceneName = scene.name;
+            return;
+        }
+
         hasCheckpoint = false;
         currentCheckpoint = null;
 
         lastSceneName = scene.name;
+    }
+
+    public void LoadGame()
+    {
+        SaveData data = SaveSystem.LoadGame();
+        if (data == null) return;
+
+        Debug.Log("Loaded orbs: " + orbs);
+        Debug.Log("Loaded health: " + playerHealth);
+        Debug.Log("Has checkpoint: " + hasCheckpoint);
+
+        playerHealth = data.playerHealth;
+        orbs = data.orbs;
+
+        respawnPosition = new Vector2(data.posX, data.posY);
+        hasCheckpoint = true;
+
+        loadingFromSave = true; // 🔥 TÄRKEÄ
+
+        SceneManager.LoadScene(data.sceneIndex);
+    }
+
+    public void ResetData()
+    {
+        playerHealth = maxHealth;
+        orbs = 0;
+        hasCheckpoint = false;
     }
 }
