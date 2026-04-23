@@ -32,7 +32,8 @@ public class LevelChange : MonoBehaviour
         if (player.CompareTag("Player"))
         {
             playerInZone = false;
-            prompt.SetActive(false);
+            if (prompt != null)
+                prompt.SetActive(false);
         }
     }
 }

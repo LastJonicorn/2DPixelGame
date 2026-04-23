@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
     public Vector3 respawnPosition;
     public bool hasCheckpoint = false;
     public Checkpoint currentCheckpoint;
+    private string lastSceneName;
 
     private void Awake()
     {
@@ -26,5 +28,34 @@ public class GameManager : MonoBehaviour
 
         instance = this;
         DontDestroyOnLoad(gameObject);
+    }
+    private void Start()
+    {
+        lastSceneName = SceneManager.GetActiveScene().name;
+    }
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // Jos scene on sama → EI resetoida (kuolema)
+        if (scene.name == lastSceneName)
+        {
+            return;
+        }
+
+        // Uusi scene → resetoi checkpoint
+        hasCheckpoint = false;
+        currentCheckpoint = null;
+
+        lastSceneName = scene.name;
     }
 }
