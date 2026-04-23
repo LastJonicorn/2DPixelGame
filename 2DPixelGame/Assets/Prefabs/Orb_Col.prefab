@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 63861903380187913}
   - component: {fileID: 3055755727154844941}
   - component: {fileID: 5675750648471488833}
+  - component: {fileID: 8458405507527721920}
   m_Layer: 0
   m_Name: Orb_Col
   m_TagString: Untagged
@@ -81,7 +82,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1326383767
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 2
   m_MaskInteraction: 0
   m_Sprite: {fileID: 4989568268329552114, guid: 211c37cbb4591bc4b85900936e7b2559, type: 3}
@@ -130,6 +131,19 @@ CircleCollider2D:
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0.0045312643}
   m_Radius: 0.26632857
+--- !u!114 &8458405507527721920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3558216800348973100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a53d8ad4b5a8b8644adc998c7d9c8b21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OrbCollectible
+  value: 1
 --- !u!1 &6488452114110096601
 GameObject:
   m_ObjectHideFlags: 0
@@ -4932,7 +4946,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: 1326383767
-  m_SortingLayer: 6
+  m_SortingLayer: 7
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_RenderMode: 0
