@@ -7,6 +7,11 @@ public class PlayerCombat : MonoBehaviour
     public float attackRange = 0.3f;
     public LayerMask enemyLayers;
     public int attackDamage = 40;
+    private PlayerMana mana;
+    void Start()
+    {
+        mana = GetComponent<PlayerMana>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -17,6 +22,11 @@ public class PlayerCombat : MonoBehaviour
         if (Input.GetButtonDown("Attack"))
         {
             Attack();
+        }
+
+        if (Input.GetButtonDown("HeavyAttack"))
+        {
+            HeavyAttack();
         }
     }
 
@@ -32,6 +42,32 @@ public class PlayerCombat : MonoBehaviour
         foreach(Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+        }
+    }
+    void HeavyAttack()
+    {
+        int manaCost = 30;
+
+        // ei tarpeeksi manaa
+        if (mana == null || !mana.UseMana(manaCost))
+        {
+            Debug.Log("Not enough mana!");
+            return;
+        }
+
+        // animaatio
+        animator.SetTrigger("HeavyAttack");
+
+        // enemmän damagea
+        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(
+            attackPoint.position,
+            attackRange * 1.5f, // isompi range
+            enemyLayers
+        );
+
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            enemy.GetComponent<Enemy>().TakeDamage(attackDamage * 2);
         }
     }
 

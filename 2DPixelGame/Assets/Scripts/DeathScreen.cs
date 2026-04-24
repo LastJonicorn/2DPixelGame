@@ -25,6 +25,10 @@ public class DeathScreen : MonoBehaviour
     public void RestartLevel()
     {
         Time.timeScale = 1f;
+
+        GameManager.instance.playerHealth = GameManager.instance.maxHealth;
+        GameManager.instance.playerMana = GameManager.instance.maxMana;
+
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -32,5 +36,11 @@ public class DeathScreen : MonoBehaviour
     {
         Time.timeScale = 1f;
         Application.Quit();
+    }
+
+    public void MainMenu()
+    {
+        Time.timeScale = 1f;
+        FadeManager.instance.FadeToScene(0);
     }
 }

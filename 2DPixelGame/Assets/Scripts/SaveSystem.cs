@@ -10,6 +10,9 @@ public static class SaveSystem
         SaveData data = new SaveData();
 
         data.playerHealth = GameManager.instance.playerHealth;
+        data.playerMana = GameManager.instance.playerMana;
+        data.maxMana = GameManager.instance.maxMana;
+        data.maxHealth = GameManager.instance.maxHealth;
         data.orbs = GameManager.instance.orbs;
 
         data.posX = GameManager.instance.respawnPosition.x;

@@ -109,7 +109,7 @@ TrailRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1074028011
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Time: 0.1
@@ -199,6 +199,7 @@ GameObject:
   - component: {fileID: 58782591844698707}
   - component: {fileID: 8498817643388327641}
   - component: {fileID: 7637798613823301714}
+  - component: {fileID: 1169059184241917903}
   - component: {fileID: 3729946935103631639}
   m_Layer: 3
   m_Name: Player
@@ -272,7 +273,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -1074028011
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_MaskInteraction: 0
   m_Sprite: {fileID: -5833172737723542889, guid: 385702f9c5ce52c4ea8b0c7781bd4038, type: 3}
@@ -506,6 +507,21 @@ MonoBehaviour:
   currentHealth: 0
   healthBar: {fileID: 0}
   animator: {fileID: 1903864168718515946}
+--- !u!114 &1169059184241917903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602821586019320682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ff082f626f69614aa9766b7343c17d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMana
+  maxMana: 100
+  currentMana: 100
+  manaBar: {fileID: 0}
 --- !u!114 &3729946935103631639
 MonoBehaviour:
   m_ObjectHideFlags: 0

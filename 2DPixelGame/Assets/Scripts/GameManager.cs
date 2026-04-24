@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
     public int maxHealth = 100;
     public int orbs = 0;
     public int exp = 0;
-    public int playerMana = 0;
-    public int maxMana = 0;
+    public float playerMana = 100;
+    public float maxMana = 100;
 
     public Vector3 respawnPosition;
     public bool hasCheckpoint = false;
@@ -85,7 +85,12 @@ public class GameManager : MonoBehaviour
         Debug.Log("Loaded health: " + playerHealth);
         Debug.Log("Has checkpoint: " + hasCheckpoint);
 
+        playerMana = data.playerMana;
+        maxMana = data.maxMana;
+
         playerHealth = data.playerHealth;
+        maxHealth = data.maxHealth;
+
         orbs = data.orbs;
 
         respawnPosition = new Vector2(data.posX, data.posY);
@@ -98,7 +103,10 @@ public class GameManager : MonoBehaviour
 
     public void ResetData()
     {
+        maxHealth = 100;
         playerHealth = maxHealth;
+        maxMana = 100;
+        playerMana = maxMana;
         orbs = 0;
         hasCheckpoint = false;
     }
