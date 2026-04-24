@@ -24,7 +24,7 @@ public class OrbCollectible : MonoBehaviour
     {
         GameManager.instance.orbs += value;
 
-        Debug.Log("Orb collected! Total: " + GameManager.instance.orbs);
+        //Debug.Log("Orb collected! Total: " + GameManager.instance.orbs);
 
         Destroy(gameObject);
     }

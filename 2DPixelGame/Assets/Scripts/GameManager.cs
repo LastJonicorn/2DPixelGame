@@ -8,8 +8,15 @@ public class GameManager : MonoBehaviour
     [Header("Player Data")]
     public float playerHealth = 100;
     public int maxHealth = 100;
+
     public int orbs = 0;
+
+    public int attackPower = 10;
+
+    public int level = 1;
     public int exp = 0;
+    public int expToNextLevel = 100;
+
     public float playerMana = 100;
     public float maxMana = 100;
 
@@ -76,6 +83,31 @@ public class GameManager : MonoBehaviour
         lastSceneName = scene.name;
     }
 
+    public void AddExp(int amount)
+    {
+        exp += amount;
+
+        if (exp >= expToNextLevel)
+        {
+            LevelUp();
+        }
+    }
+
+    void LevelUp()
+    {
+        exp -= expToNextLevel;
+        level++;
+
+        expToNextLevel += 50; // optional scaling
+
+        // resettaa resurssit
+        playerHealth = maxHealth;
+        playerMana = maxMana;
+
+        // avataan valinta UI:lle
+        FindAnyObjectByType<LevelUpUI>().Open();
+    }
+
     public void LoadGame()
     {
         SaveData data = SaveSystem.LoadGame();
@@ -85,11 +117,30 @@ public class GameManager : MonoBehaviour
         Debug.Log("Loaded health: " + playerHealth);
         Debug.Log("Has checkpoint: " + hasCheckpoint);
 
+        if (data.level <= 0)
+        {
+            level = 1;
+            exp = 0;
+            expToNextLevel = 100;
+        }
+        else
+        {
+            level = data.level;
+            exp = data.exp;
+            expToNextLevel = data.expToNextLevel;
+        }
+
         playerMana = data.playerMana;
         maxMana = data.maxMana;
 
         playerHealth = data.playerHealth;
         maxHealth = data.maxHealth;
+
+        level = data.level;
+        exp = data.exp;
+        expToNextLevel = data.expToNextLevel;
+
+        attackPower = data.attackPower;
 
         orbs = data.orbs;
 
@@ -105,9 +156,18 @@ public class GameManager : MonoBehaviour
     {
         maxHealth = 100;
         playerHealth = maxHealth;
+
         maxMana = 100;
         playerMana = maxMana;
+
         orbs = 0;
-        hasCheckpoint = false;
+
+        attackPower = 10;
+
+        level = 1;
+        exp = 0;
+        expToNextLevel = 100;
+
+    hasCheckpoint = false;
     }
 }

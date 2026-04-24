@@ -11,9 +11,17 @@ public static class SaveSystem
 
         data.playerHealth = GameManager.instance.playerHealth;
         data.playerMana = GameManager.instance.playerMana;
+
         data.maxMana = GameManager.instance.maxMana;
         data.maxHealth = GameManager.instance.maxHealth;
+
+        data.attackPower = GameManager.instance.attackPower;
+
         data.orbs = GameManager.instance.orbs;
+
+        data.level = GameManager.instance.level;
+        data.exp = GameManager.instance.exp;
+        data.expToNextLevel = GameManager.instance.expToNextLevel;
 
         data.posX = GameManager.instance.respawnPosition.x;
         data.posY = GameManager.instance.respawnPosition.y;

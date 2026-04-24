@@ -3,9 +3,17 @@ public class SaveData
 {
     public float playerHealth;
     public float playerMana;
+
     public float maxMana;
     public int maxHealth;
+
     public int orbs;
+
+    public int attackPower;
+
+    public int level;
+    public int exp;
+    public int expToNextLevel;
 
     public float posX;
     public float posY;

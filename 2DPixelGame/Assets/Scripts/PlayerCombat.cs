@@ -6,10 +6,18 @@ public class PlayerCombat : MonoBehaviour
     public Transform attackPoint;
     public float attackRange = 0.3f;
     public LayerMask enemyLayers;
-    public int attackDamage = 40;
+    public int attackDamage; 
     private PlayerMana mana;
+
+    [Header("Heavy Attack")]
+    public GameObject heavyAttackPrefab;
+    public Transform[] heavyAttackPoints;
+    public float heavyAttackRange = 1f;
+    public int heavyAttackDamage = 80;
+
     void Start()
     {
+        attackDamage = GameManager.instance.attackPower;
         mana = GetComponent<PlayerMana>();
     }
 
@@ -41,33 +49,36 @@ public class PlayerCombat : MonoBehaviour
         //Vahingoita vihollista
         foreach(Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<Enemy>().TakeDamage(attackDamage);
+            enemy.GetComponent<Enemy>().TakeDamage(GameManager.instance.attackPower);
         }
     }
     void HeavyAttack()
     {
         int manaCost = 30;
 
-        // ei tarpeeksi manaa
         if (mana == null || !mana.UseMana(manaCost))
         {
             Debug.Log("Not enough mana!");
             return;
         }
 
-        // animaatio
         animator.SetTrigger("HeavyAttack");
+    }
 
-        // enemmän damagea
-        Collider2D[] hitEnemies = Physics2D.OverlapCircleAll(
-            attackPoint.position,
-            attackRange * 1.5f, // isompi range
-            enemyLayers
-        );
+    public void HeavyHit1() => DoHeavyHit(0);
+    public void HeavyHit2() => DoHeavyHit(1);
+    public void HeavyHit3() => DoHeavyHit(2);
+    public void HeavyHit4() => DoHeavyHit(3);
 
-        foreach (Collider2D enemy in hitEnemies)
+    void DoHeavyHit(int index)
+    {
+        if (index >= heavyAttackPoints.Length) return;
+
+        Transform point = heavyAttackPoints[index];
+
+        if (heavyAttackPrefab != null)
         {
-            enemy.GetComponent<Enemy>().TakeDamage(attackDamage * 2);
+            Instantiate(heavyAttackPrefab, point.position, Quaternion.identity);
         }
     }
 

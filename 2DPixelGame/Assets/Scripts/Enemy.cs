@@ -22,6 +22,8 @@ public class Enemy : MonoBehaviour
     public AudioClip hurtSound;
     public AudioClip deathSound;
 
+    [Header("EXP")]
+    public int expValue = 20;
 
     void Start()
     {
@@ -88,6 +90,8 @@ public class Enemy : MonoBehaviour
         {
             patrol.enabled = false;
         }
+
+        GameManager.instance.AddExp(expValue);
 
         GetComponent<Collider2D>().enabled = false;
         //Destroy(gameObject);

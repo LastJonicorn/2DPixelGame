@@ -370,6 +370,7 @@ MonoBehaviour:
   audioSource: {fileID: 723370308739529584}
   hurtSound: {fileID: 8300000, guid: 008e4217ac6a4cb48976c524b0072a00, type: 3}
   deathSound: {fileID: 8300000, guid: b623acc8b1f2ea84082d8ef5f3cfd921, type: 3}
+  expValue: 50
 --- !u!114 &3323819278177566560
 MonoBehaviour:
   m_ObjectHideFlags: 0
