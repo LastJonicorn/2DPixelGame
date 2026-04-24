@@ -81626,6 +81626,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7962998411453614725, guid: 0c0c513eea73ded4aad123481ac34d44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1929244382}
+    - target: {fileID: 7962998411453614725, guid: 0c0c513eea73ded4aad123481ac34d44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 8296513432343807039, guid: 0c0c513eea73ded4aad123481ac34d44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1929244382}
+    - target: {fileID: 8296513432343807039, guid: 0c0c513eea73ded4aad123481ac34d44, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Resume
+      objectReference: {fileID: 0}
     - target: {fileID: 8805494988941711621, guid: 0c0c513eea73ded4aad123481ac34d44, type: 3}
       propertyPath: m_IsActive
       value: 0

@@ -4,33 +4,43 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
-    public float maxHealth = 100;
     public float currentHealth;
     public Image healthBar;
     public Animator animator;
 
-    void Start()
+    private void Start()
     {
+        // 🔥 HAETAAN AINA GAMEMANAGERISTA
         currentHealth = GameManager.instance.playerHealth;
 
         if (healthBar == null)
         {
             healthBar = GameObject.FindWithTag("HealthBar").GetComponent<Image>();
         }
+
+        UpdateUI();
     }
 
     void Update()
     {
-        healthBar.fillAmount = Mathf.Clamp(currentHealth / maxHealth, 0, 1);
+        UpdateUI();
+    }
+
+    public void UpdateUI()
+    {
+        healthBar.fillAmount = currentHealth / GameManager.instance.maxHealth;
     }
 
     public void AddHealth(int health)
     {
         currentHealth += health;
 
+        float maxHealth = GameManager.instance.maxHealth;
         currentHealth = Mathf.Clamp(currentHealth, 0, maxHealth);
 
         GameManager.instance.playerHealth = currentHealth;
+
+        UpdateUI();
     }
 
     public void TakeDamage(int damage)
@@ -39,6 +49,8 @@ public class PlayerHealth : MonoBehaviour
         GameManager.instance.playerHealth = currentHealth;
 
         animator.SetTrigger("TakeDamage");
+
+        UpdateUI();
 
         if (currentHealth <= 0)
         {
@@ -50,10 +62,10 @@ public class PlayerHealth : MonoBehaviour
     {
         GameManager.instance.playerHealth = GameManager.instance.maxHealth;
 
+        currentHealth = GameManager.instance.maxHealth;
+
+        UpdateUI();
+
         FindAnyObjectByType<DeathScreen>().PlayerDied();
-
-        //var currentScene = SceneManager.GetActiveScene();
-        //SceneManager.LoadScene(currentScene.name);
-
     }
 }

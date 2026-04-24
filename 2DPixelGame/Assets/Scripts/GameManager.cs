@@ -105,6 +105,7 @@ public class GameManager : MonoBehaviour
         playerMana = maxMana;
 
         SyncPlayerStats();
+        SyncAll();
 
         // avataan valinta UI:lle
         FindAnyObjectByType<LevelUpUI>().Open();
@@ -165,6 +166,23 @@ public class GameManager : MonoBehaviour
         if (pm != null)
         {
             pm.currentMana = playerMana;
+        }
+    }
+
+    public void SyncAll()
+    {
+        PlayerHealth ph = FindAnyObjectByType<PlayerHealth>();
+        if (ph != null)
+        {
+            ph.currentHealth = playerHealth;
+            ph.UpdateUI();
+        }
+
+        PlayerMana pm = FindAnyObjectByType<PlayerMana>();
+        if (pm != null)
+        {
+            pm.currentMana = playerMana;
+            pm.UpdateUI();
         }
     }
 

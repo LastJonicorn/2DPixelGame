@@ -3,31 +3,31 @@ using UnityEngine.UI;
 
 public class PlayerMana : MonoBehaviour
 {
-    public float maxMana = 100f;
     public float currentMana;
 
     public Image manaBar;
 
     void Start()
     {
-        maxMana = GameManager.instance.maxMana;
         currentMana = GameManager.instance.playerMana;
 
         if (manaBar == null)
             manaBar = GameObject.FindWithTag("ManaBar").GetComponent<Image>();
 
-        UpdateManaUI(); // 🔥 TÄRKEÄ
+        UpdateUI();
     }
 
     void Update()
     {
-        if (maxMana <= 0f) return;
-
-        UpdateManaUI();
+        UpdateUI();
     }
 
-    void UpdateManaUI()
+    public void UpdateUI()
     {
+        float maxMana = GameManager.instance.maxMana;
+
+        if (maxMana <= 0f) return;
+
         manaBar.fillAmount = currentMana / maxMana;
     }
 
@@ -44,6 +44,8 @@ public class PlayerMana : MonoBehaviour
     public void AddMana(float amount)
     {
         currentMana += amount;
+
+        float maxMana = GameManager.instance.maxMana;
         currentMana = Mathf.Clamp(currentMana, 0f, maxMana);
 
         GameManager.instance.playerMana = currentMana;
