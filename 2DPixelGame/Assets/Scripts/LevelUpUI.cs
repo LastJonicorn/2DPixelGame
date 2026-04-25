@@ -15,7 +15,7 @@ public class LevelUpUI : MonoBehaviour
 
     public void AddHealth()
     {
-        GameManager.instance.maxHealth += 10;
+        GameManager.instance.maxHealth += 20;
 
         // täytä HP heti
         GameManager.instance.playerHealth = GameManager.instance.maxHealth;
@@ -26,7 +26,7 @@ public class LevelUpUI : MonoBehaviour
 
     public void AddMana()
     {
-        GameManager.instance.maxMana += 10;
+        GameManager.instance.maxMana += 15;
 
         GameManager.instance.playerMana = GameManager.instance.maxMana;
 
@@ -36,7 +36,7 @@ public class LevelUpUI : MonoBehaviour
 
     public void AddAttack()
     {
-        GameManager.instance.attackPower += 10;
+        GameManager.instance.attackPower += 5;
 
         Sync();
         Close();

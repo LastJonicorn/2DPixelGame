@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     public int orbs = 0;
 
-    public int attackPower = 10;
+    public int attackPower = 20;
 
     public int level = 1;
     public int exp = 0;
@@ -196,7 +196,7 @@ public class GameManager : MonoBehaviour
 
         orbs = 0;
 
-        attackPower = 10;
+        attackPower = 20;
 
         level = 1;
         exp = 0;
