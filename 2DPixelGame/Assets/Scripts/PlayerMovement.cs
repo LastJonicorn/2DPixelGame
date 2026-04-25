@@ -49,10 +49,8 @@ public class PlayerMovement : MonoBehaviour
             animator.SetBool("IsJumping", true);
         }
 
-        if (Input.GetButton("Crouch"))
-        {
-            crouch = true;
-        } else if (Input.GetButtonUp("Crouch"))
+        crouch = verticalMove < -0.7f;
+        if (isInLadder)
         {
             crouch = false;
         }

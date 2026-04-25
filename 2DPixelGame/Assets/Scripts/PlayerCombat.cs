@@ -15,10 +15,15 @@ public class PlayerCombat : MonoBehaviour
     public float heavyAttackRange = 1f;
     public int heavyAttackDamage = 80;
 
+    public Transform airAttackPoint;
+
+    private PlayerMovement movement;
+
     void Start()
     {
         attackDamage = GameManager.instance.attackPower;
         mana = GetComponent<PlayerMana>();
+        movement = GetComponent<PlayerMovement>();
     }
 
     // Update is called once per frame
@@ -27,7 +32,7 @@ public class PlayerCombat : MonoBehaviour
         PauseMenu pauseMenu = FindAnyObjectByType<PauseMenu>();
         if (pauseMenu != null && pauseMenu.GameIsPaused) return;
 
-        if (Input.GetButtonDown("Attack"))
+        if (movement.controller.IsGrounded && Input.GetButtonDown("Attack"))
         {
             Attack();
         }
@@ -35,6 +40,12 @@ public class PlayerCombat : MonoBehaviour
         if (Input.GetButtonDown("HeavyAttack"))
         {
             HeavyAttack();
+        }
+
+        if (!movement.controller.IsGrounded && Input.GetButtonDown("Attack"))
+        {
+            //Debug.Log("Air Attack");
+            AirAttack(); 
         }
     }
 
@@ -65,6 +76,26 @@ public class PlayerCombat : MonoBehaviour
         animator.SetTrigger("HeavyAttack");
     }
 
+    void AirAttack()
+    {
+        animator.SetTrigger("AirAttack");
+
+        Vector2 boxSize = new Vector2(1.0f, 1.5f); // leveys, korkeus
+        Vector2 boxCenter = (Vector2)airAttackPoint.position + Vector2.down * 0.75f;
+
+        Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(
+            boxCenter,
+            boxSize,
+            0f,
+            enemyLayers
+        );
+
+        foreach (Collider2D enemy in hitEnemies)
+        {
+            enemy.GetComponent<Enemy>().TakeDamage(GameManager.instance.attackPower);
+        }
+    }
+
     public void HeavyHit1() => DoHeavyHit(0);
     public void HeavyHit2() => DoHeavyHit(1);
     public void HeavyHit3() => DoHeavyHit(2);
@@ -85,5 +116,10 @@ public class PlayerCombat : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+
+        Vector2 boxSize = new Vector2(1.0f, 1.5f);
+        Vector2 boxCenter = (Vector2)airAttackPoint.position + Vector2.down * 0.75f;
+
+        Gizmos.DrawWireCube(boxCenter, boxSize);
     }
 }
