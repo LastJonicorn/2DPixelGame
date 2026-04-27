@@ -258,6 +258,7 @@ Transform:
   - {fileID: 7403157950659815044}
   - {fileID: 3441393716203719907}
   - {fileID: 4074311062478734748}
+  - {fileID: 587157559106737183}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &6666438332153017214
@@ -581,6 +582,11 @@ MonoBehaviour:
   heavyAttackRange: 1
   heavyAttackDamage: 80
   airAttackPoint: {fileID: 4074311062478734748}
+  airAttackWidth: 1.5
+  airAttackHeight: 1.75
+  airAttackInstantiatePoint: {fileID: 587157559106737183}
+  airAttackPrefab: {fileID: 0}
+  bounceForce: 8
 --- !u!1 &2486300877562866977
 GameObject:
   m_ObjectHideFlags: 0
@@ -796,7 +802,38 @@ Transform:
   m_GameObject: {fileID: 7946126474869357824}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.275, y: -1.198, z: 0}
+  m_LocalPosition: {x: -0.11, y: -0.8, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2868003391831049033}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8934553611898208365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 587157559106737183}
+  m_Layer: 3
+  m_Name: AirAttackInstantiatePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &587157559106737183
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8934553611898208365}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.18, y: -1.74, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -1,7 +1,9 @@
+using System.Drawing;
 using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
+    private Rigidbody2D rb;
     public Animator animator;
     public Transform attackPoint;
     public float attackRange = 0.3f;
@@ -15,7 +17,13 @@ public class PlayerCombat : MonoBehaviour
     public float heavyAttackRange = 1f;
     public int heavyAttackDamage = 80;
 
+    [Header("Air Attack")]
     public Transform airAttackPoint;
+    public float airAttackWidth = 1f;
+    public float airAttackHeight = 1.5f;
+    public Transform airAttackInstantiatePoint;
+    public GameObject airAttackPrefab;
+    public float bounceForce = 12f;
 
     private PlayerMovement movement;
 
@@ -24,6 +32,7 @@ public class PlayerCombat : MonoBehaviour
         attackDamage = GameManager.instance.attackPower;
         mana = GetComponent<PlayerMana>();
         movement = GetComponent<PlayerMovement>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -80,7 +89,12 @@ public class PlayerCombat : MonoBehaviour
     {
         animator.SetTrigger("AirAttack");
 
-        Vector2 boxSize = new Vector2(1.0f, 1.5f); // leveys, korkeus
+        if (airAttackPrefab != null)
+        {
+            Instantiate(airAttackPrefab, airAttackInstantiatePoint.position, Quaternion.identity);
+        }
+
+        Vector2 boxSize = new Vector2(airAttackWidth, airAttackHeight); // leveys, korkeus
         Vector2 boxCenter = (Vector2)airAttackPoint.position + Vector2.down * 0.75f;
 
         Collider2D[] hitEnemies = Physics2D.OverlapBoxAll(
@@ -90,9 +104,18 @@ public class PlayerCombat : MonoBehaviour
             enemyLayers
         );
 
+        bool hitEnemy = false;
+
         foreach (Collider2D enemy in hitEnemies)
         {
             enemy.GetComponent<Enemy>().TakeDamage(GameManager.instance.attackPower);
+            hitEnemy = true;
+        }
+
+        // bounce jos osuttiin
+        if (hitEnemy)
+        {
+            rb.linearVelocity = new Vector2(rb.linearVelocity.x, bounceForce);
         }
     }
 
@@ -117,7 +140,7 @@ public class PlayerCombat : MonoBehaviour
     {
         Gizmos.DrawWireSphere(attackPoint.position, attackRange);
 
-        Vector2 boxSize = new Vector2(1.0f, 1.5f);
+        Vector2 boxSize = new Vector2(airAttackWidth, airAttackHeight);
         Vector2 boxCenter = (Vector2)airAttackPoint.position + Vector2.down * 0.75f;
 
         Gizmos.DrawWireCube(boxCenter, boxSize);
