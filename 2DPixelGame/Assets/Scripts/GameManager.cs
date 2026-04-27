@@ -149,7 +149,7 @@ public class GameManager : MonoBehaviour
 
         orbs = data.orbs;
 
-        respawnPosition = new Vector2(data.posX, data.posY);
+        respawnPosition = new Vector2(data.posX, data.posY + 2.0f);
         hasCheckpoint = true;
 
         loadingFromSave = true; // 🔥 TÄRKEÄ
