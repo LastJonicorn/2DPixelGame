@@ -11,6 +11,10 @@ public class PlayerCombat : MonoBehaviour
     public int attackDamage; 
     private PlayerMana mana;
 
+    [Header("Attack Timing")]
+    public float attackCooldown = 0.3f;
+    private float lastAttackTime;
+
     [Header("Heavy Attack")]
     public GameObject heavyAttackPrefab;
     public Transform[] heavyAttackPoints;
@@ -41,21 +45,27 @@ public class PlayerCombat : MonoBehaviour
         PauseMenu pauseMenu = FindAnyObjectByType<PauseMenu>();
         if (pauseMenu != null && pauseMenu.GameIsPaused) return;
 
-        if (movement.controller.IsGrounded && Input.GetButtonDown("Attack"))
+        if (movement.controller.IsGrounded && Input.GetButtonDown("Attack") && CanAttack())
         {
             Attack();
+            lastAttackTime = Time.time;
         }
 
-        if (Input.GetButtonDown("HeavyAttack"))
+        if (Input.GetButtonDown("HeavyAttack") && CanAttack())
         {
             HeavyAttack();
+            lastAttackTime = Time.time;
         }
 
-        if (!movement.controller.IsGrounded && Input.GetButtonDown("Attack"))
+        if (!movement.controller.IsGrounded && Input.GetButtonDown("Attack") && CanAttack())
         {
-            //Debug.Log("Air Attack");
-            AirAttack(); 
+            AirAttack();
+            lastAttackTime = Time.time;
         }
+    }
+    bool CanAttack()
+    {
+        return Time.time >= lastAttackTime + attackCooldown;
     }
 
     void Attack()
