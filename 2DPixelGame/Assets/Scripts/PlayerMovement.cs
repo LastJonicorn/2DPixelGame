@@ -31,7 +31,12 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         PauseMenu pauseMenu = FindAnyObjectByType<PauseMenu>();
-        if (pauseMenu != null && pauseMenu.GameIsPaused) return;
+
+        if (pauseMenu != null && pauseMenu.GameIsPaused) 
+            return;
+
+        if (GameManager.instance != null && GameManager.instance.inputLocked)
+            return;
 
         horizontalMove = Input.GetAxisRaw("Horizontal") * runSpeed;
         verticalMove = Input.GetAxisRaw("Vertical");

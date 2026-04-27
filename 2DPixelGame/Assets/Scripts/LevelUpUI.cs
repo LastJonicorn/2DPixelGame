@@ -10,6 +10,9 @@ public class LevelUpUI : MonoBehaviour
     {
         panel.SetActive(true);
         Time.timeScale = 0f;
+
+        GameManager.instance.inputLocked = true;
+
         EventSystem.current.SetSelectedGameObject(firstButton);
     }
 
@@ -62,5 +65,8 @@ public class LevelUpUI : MonoBehaviour
     {
         panel.SetActive(false);
         Time.timeScale = 1f;
+
+        GameManager.instance.inputLocked = false;
+
     }
 }

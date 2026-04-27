@@ -43,7 +43,12 @@ public class PlayerCombat : MonoBehaviour
     void Update()
     {
         PauseMenu pauseMenu = FindAnyObjectByType<PauseMenu>();
-        if (pauseMenu != null && pauseMenu.GameIsPaused) return;
+
+        if (pauseMenu != null && pauseMenu.GameIsPaused) 
+            return;
+
+        if (GameManager.instance != null && GameManager.instance.inputLocked)
+            return;
 
         if (movement.controller.IsGrounded && Input.GetButtonDown("Attack") && CanAttack())
         {

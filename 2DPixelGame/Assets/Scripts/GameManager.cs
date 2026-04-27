@@ -28,6 +28,8 @@ public class GameManager : MonoBehaviour
 
     private bool loadingFromSave = false;
 
+    public bool inputLocked = false;
+
     private void Awake()
     {
         if (instance != null && instance != this)

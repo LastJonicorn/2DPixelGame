@@ -58,7 +58,7 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    void Die()
+    public void Die()
     {
         GameManager.instance.playerHealth = GameManager.instance.maxHealth;
 

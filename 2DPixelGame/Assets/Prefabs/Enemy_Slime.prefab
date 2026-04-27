@@ -357,6 +357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3ddd7a8a43a8514dbbaffc0d121fb02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
+  damagePopupPrefab: {fileID: 4846897064737268408, guid: b0799543220451a42a9af0be064defd9, type: 3}
   animator: {fileID: 3188419713445916938}
   maxHealth: 100
   currentHealth: 0
