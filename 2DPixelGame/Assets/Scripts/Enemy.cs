@@ -76,6 +76,12 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
+        EnemyShooter shooter = GetComponent<EnemyShooter>();
+        if (shooter != null)
+        {
+            shooter.Die();
+        }
+
         animator.SetBool("IsDead", true);
         audioSource.PlayOneShot(deathSound);
 
