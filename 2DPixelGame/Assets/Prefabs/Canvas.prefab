@@ -204,15 +204,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6674123386126178574, guid: 625ea7a222aa8d747ab298e975de3998, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 27.3906
+      value: 23.3
       objectReference: {fileID: 0}
     - target: {fileID: 8424160477792219944, guid: 625ea7a222aa8d747ab298e975de3998, type: 3}
       propertyPath: m_fontSize
-      value: 44.75
+      value: 40.1
       objectReference: {fileID: 0}
     - target: {fileID: 8424160477792219944, guid: 625ea7a222aa8d747ab298e975de3998, type: 3}
-      propertyPath: m_enableAutoSizing
-      value: 1
+      propertyPath: m_margin.z
+      value: 17.751099
+      objectReference: {fileID: 0}
+    - target: {fileID: 8424160477792219944, guid: 625ea7a222aa8d747ab298e975de3998, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8771968773565649041, guid: 625ea7a222aa8d747ab298e975de3998, type: 3}
       propertyPath: m_Name
@@ -734,6 +738,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2968158032338948315, guid: 065f71f8983cbe44cafc9ccaf3c99bf7, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801697371549160374, guid: 065f71f8983cbe44cafc9ccaf3c99bf7, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
