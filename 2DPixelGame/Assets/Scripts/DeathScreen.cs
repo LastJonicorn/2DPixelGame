@@ -26,10 +26,8 @@ public class DeathScreen : MonoBehaviour
     {
         Time.timeScale = 1f;
 
-        GameManager.instance.playerHealth = GameManager.instance.maxHealth;
-        GameManager.instance.playerMana = GameManager.instance.maxMana;
+        GameManager.instance.LoadGame();
 
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void QuitGame()
