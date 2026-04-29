@@ -25,10 +25,13 @@ public class Enemy : MonoBehaviour
     [Header("EXP")]
     public int expValue = 20;
 
+    BossEyeMovement bossMovement;
+
     void Start()
     {
         currentHealth = maxHealth;
         patrol = GetComponent<EnemyPatrol>();
+        bossMovement = GetComponent<BossEyeMovement>();
     }
 
     private void Update()
@@ -67,6 +70,11 @@ public class Enemy : MonoBehaviour
         audioSource.PlayOneShot(hurtSound);
         //Näytä vahingoittumisanimaatio
         animator.SetTrigger("Hurt");
+
+        if (bossMovement != null)
+        {
+            bossMovement.Stun();
+        }
 
         if (currentHealth <= 0)
         {
