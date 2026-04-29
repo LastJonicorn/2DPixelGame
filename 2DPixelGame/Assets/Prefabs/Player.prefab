@@ -287,7 +287,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 7b7d1ec89e9209d41a6725a7011fe507, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -573,6 +573,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   attackDamage: 40
+  attackCooldown: 0.3
   heavyAttackPrefab: {fileID: 4943322663335452742, guid: bb2470497cf5fed45a98919996b931c1, type: 3}
   heavyAttackPoints:
   - {fileID: 3928043059357256206}
