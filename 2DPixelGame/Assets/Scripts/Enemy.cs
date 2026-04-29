@@ -89,6 +89,11 @@ public class Enemy : MonoBehaviour
         {
             shooter.Die();
         }
+        BossEyeMovement bossMovement = GetComponent<BossEyeMovement>();
+        if (bossMovement != null)
+        {
+            bossMovement.Die();
+        }
 
         animator.SetBool("IsDead", true);
         audioSource.PlayOneShot(deathSound);

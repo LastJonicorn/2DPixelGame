@@ -5,11 +5,13 @@ public class BossEyeMovement : MonoBehaviour
     enum State
     {
         Chase,
+        Shooting,
         Stunned
     }
 
     public bool facingRight = true;
     public bool facingLeft = false;
+    private bool isDead = false;
 
     public float speed = 3f;
     public Animator animator;
@@ -23,11 +25,37 @@ public class BossEyeMovement : MonoBehaviour
     public float stunDuration = 0.5f;
     private float stunTimer;
 
+    [Header("Knockback")]
+    public float knockbackForce = 8f;
+    public float knockbackDuration = 0.2f;
+
+    private float knockbackTimer;
+    private Vector2 knockbackDirection;
+
+    [Header("Radial Attack")]
+    public GameObject projectilePrefab;
+    public int projectileCount = 12;
+    public float shootCooldown = 3f;
+    public float shootDelay = 0.5f;
+
+    private float lastShootTime;
+    private float shootTimer;
+    private bool isShooting;
+
     private State currentState = State.Chase;
+
+    private BossHealthBar healthBar;
 
     void Start()
     {
         FindPlayer();
+        healthBar = FindAnyObjectByType<BossHealthBar>();
+
+        if (healthBar != null)
+        {
+            healthBar.SetBoss(GetComponent<Enemy>());
+            healthBar.Hide(); // aluksi piilossa
+        }
     }
 
     void Update()
@@ -38,7 +66,16 @@ public class BossEyeMovement : MonoBehaviour
             return;
         }
 
-        // jos pelaaja ei ole alueella → boss ei aktivoidu
+        bool playerInside = movementBounds.bounds.Contains(player.position);
+
+        if (healthBar != null)
+        {
+            if (playerInside)
+                healthBar.Show();
+            else
+                healthBar.Hide();
+        }
+
         if (movementBounds != null && !movementBounds.bounds.Contains(player.position))
             return;
 
@@ -46,6 +83,10 @@ public class BossEyeMovement : MonoBehaviour
         {
             case State.Chase:
                 HandleChase();
+                break;
+
+            case State.Shooting:
+                HandleShooting();
                 break;
 
             case State.Stunned:
@@ -60,11 +101,68 @@ public class BossEyeMovement : MonoBehaviour
     {
         FacePlayer();
         MoveTowardsPlayer();
+
+        if (Time.time >= lastShootTime + shootCooldown)
+        {
+            currentState = State.Shooting;
+            shootTimer = shootDelay;
+
+            //animator.SetTrigger("Attack"); // optional animaatio
+        }
+    }
+    void HandleShooting()
+    {
+        shootTimer -= Time.deltaTime;
+
+        // boss pysyy paikallaan ja katsoo pelaajaa
+        FacePlayer();
+
+        if (shootTimer <= 0f && !isShooting)
+        {
+            FireRadialProjectiles();
+            isShooting = true;
+        }
+
+        // pieni viive ennen kuin palaa chaseen
+        if (shootTimer <= -0.2f)
+        {
+            lastShootTime = Time.time;
+            isShooting = false;
+            currentState = State.Chase;
+        }
+    }
+
+    void FireRadialProjectiles()
+    {
+        float angleStep = 360f / projectileCount;
+
+        for (int i = 0; i < projectileCount; i++)
+        {
+            float angle = i * angleStep;
+            float rad = angle * Mathf.Deg2Rad;
+
+            Vector2 dir = new Vector2(Mathf.Cos(rad), Mathf.Sin(rad));
+
+            GameObject proj = Instantiate(projectilePrefab, transform.position, Quaternion.identity);
+
+            proj.GetComponent<EnemyProjectile>().InitDirection(dir);
+        }
     }
 
     void HandleStun()
     {
         stunTimer -= Time.deltaTime;
+
+        // 🔥 knockback liike
+        if (knockbackTimer > 0f)
+        {
+            knockbackTimer -= Time.deltaTime;
+
+            Vector2 newPos = (Vector2)transform.position + knockbackDirection * knockbackForce * Time.deltaTime;
+
+            ClampPosition(ref newPos);
+            transform.position = newPos;
+        }
 
         if (stunTimer <= 0f)
         {
@@ -105,6 +203,17 @@ public class BossEyeMovement : MonoBehaviour
     {
         stunTimer = stunDuration;
         currentState = State.Stunned;
+
+        ApplyKnockback();
+    }
+    void ApplyKnockback()
+    {
+        if (player == null) return;
+
+        // 🔥 SUUNTA POIS PELAAJASTA
+        knockbackDirection = ((Vector2)transform.position - (Vector2)player.position).normalized;
+
+        knockbackTimer = knockbackDuration;
     }
 
     void FacePlayer()
@@ -136,5 +245,19 @@ public class BossEyeMovement : MonoBehaviour
         {
             player = obj.transform;
         }
+    }
+
+    public void Die()
+    {
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.gravityScale = 2f;
+        }
+        isDead = true;
+
+        healthBar.Hide();
+
+        this.enabled = false; // lopettaa Update kokonaan
     }
 }

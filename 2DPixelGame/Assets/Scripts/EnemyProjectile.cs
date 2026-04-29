@@ -10,18 +10,28 @@ public class EnemyProjectile : MonoBehaviour
     private Vector2 moveDir;
     private Rigidbody2D rb;
 
-    public void Init(Transform target)
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
 
+    // 🔥 VANHA: seuraa targettia
+    public void Init(Transform target)
+    {
         moveDir = (target.position - transform.position).normalized;
+        Destroy(gameObject, lifetime);
+    }
 
+    // 🔥 UUSI: radial / suora suunta
+    public void InitDirection(Vector2 dir)
+    {
+        moveDir = dir.normalized;
         Destroy(gameObject, lifetime);
     }
 
     void Update()
     {
-        // liike suoraan
+        // liike
         rb.linearVelocity = moveDir * speed;
 
         // pyörintä
