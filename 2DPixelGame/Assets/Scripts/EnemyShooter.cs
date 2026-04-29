@@ -14,11 +14,6 @@ public class EnemyShooter : MonoBehaviour
 
     private Transform player;
 
-    void Start()
-    {
-
-    }
-
     void Update()
     {
         if (player == null)

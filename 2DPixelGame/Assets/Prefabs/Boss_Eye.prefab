@@ -221,8 +221,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   speed: 3
+  animator: {fileID: 3852632364851176580}
   movementBounds: {fileID: 0}
-  stunDuration: 0.5
+  stunDuration: 1
+  dashSpeed: 10
+  dashDuration: 0.3
+  dashCooldown: 3
+  dashPrepareTime: 0.5
 --- !u!1 &5120623065445600111
 GameObject:
   m_ObjectHideFlags: 0
