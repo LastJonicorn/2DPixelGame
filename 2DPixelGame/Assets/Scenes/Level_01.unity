@@ -26446,10 +26446,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41f9b210ea42e4d4e87e9764517a8661, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraZoom
-  vcam: {fileID: 230841734}
-  normalSize: 6.29
-  bossSize: 12
-  zoomSpeed: 3
+  cameraA: {fileID: 230841734}
+  cameraB: {fileID: 1008772924}
 --- !u!1 &527635127 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3699287002184207772, guid: bae529a629335044a8bbdc47d63744f9, type: 3}
@@ -81991,6 +81989,113 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 63861903380187913, guid: 246d15d8c43bc6948a498bf4d0b05f59, type: 3}
   m_PrefabInstance: {fileID: 978449209}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1008772922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1008772925}
+  - component: {fileID: 1008772924}
+  - component: {fileID: 1008772923}
+  m_Layer: 0
+  m_Name: CinemachineCamera (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1008772923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008772922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 886251e9a18ece04ea8e61686c173e1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachinePositionComposer
+  CameraDistance: 10
+  DeadZoneDepth: 0
+  Composition:
+    ScreenPosition: {x: 0, y: 0}
+    DeadZone:
+      Enabled: 0
+      Size: {x: 0.2, y: 0.2}
+    HardLimits:
+      Enabled: 0
+      Size: {x: 0.8, y: 0.8}
+      Offset: {x: 0, y: 0}
+  CenterOnActivate: 1
+  TargetOffset: {x: 0, y: 0, z: 0}
+  Damping: {x: 1, y: 1, z: 1}
+  Lookahead:
+    Enabled: 0
+    Time: 0
+    Smoothing: 0
+    IgnoreY: 0
+--- !u!114 &1008772924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008772922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9dfa5b682dcd46bda6128250e975f58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineCamera
+  Priority:
+    Enabled: 0
+    m_Value: 0
+  OutputChannel: 1
+  StandbyUpdate: 2
+  m_StreamingVersion: 20241001
+  m_LegacyPriority: 0
+  Target:
+    TrackingTarget: {fileID: 0}
+    LookAtTarget: {fileID: 0}
+    CustomLookAtTarget: 0
+  Lens:
+    FieldOfView: 34
+    OrthographicSize: 11.43
+    NearClipPlane: 0.3
+    FarClipPlane: 1000
+    Dutch: 0
+    ModeOverride: 0
+    PhysicalProperties:
+      GateFit: 2
+      SensorSize: {x: 21.946, y: 16.002}
+      LensShift: {x: 0, y: 0}
+      FocusDistance: 10
+      Iso: 200
+      ShutterSpeed: 0.005
+      Aperture: 16
+      BladeCount: 5
+      Curvature: {x: 2, y: 11}
+      BarrelClipping: 0.25
+      Anamorphism: 0
+  BlendHint: 0
+--- !u!4 &1008772925
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1008772922}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 26.120598, y: 27.2, z: -36.7137}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1020424056
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -87246,6 +87351,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 832685582}
     m_Modifications:
     - target: {fileID: 2312332536762833458, guid: 3e4899c07a394534980bbbdc7739690f, type: 3}
+      propertyPath: cameraA
+      value: 
+      objectReference: {fileID: 230841734}
+    - target: {fileID: 2312332536762833458, guid: 3e4899c07a394534980bbbdc7739690f, type: 3}
+      propertyPath: cameraB
+      value: 
+      objectReference: {fileID: 1008772924}
+    - target: {fileID: 2312332536762833458, guid: 3e4899c07a394534980bbbdc7739690f, type: 3}
       propertyPath: movementBounds
       value: 
       objectReference: {fileID: 1203364685}
@@ -87336,3 +87449,4 @@ SceneRoots:
   - {fileID: 596450477}
   - {fileID: 1046545585}
   - {fileID: 832685582}
+  - {fileID: 1008772925}

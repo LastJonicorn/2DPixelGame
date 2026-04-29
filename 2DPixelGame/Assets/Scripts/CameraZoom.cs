@@ -3,39 +3,18 @@ using Unity.Cinemachine;
 
 public class CameraZoom : MonoBehaviour
 {
-    public CinemachineCamera vcam;
+    public CinemachineCamera cameraA;
+    public CinemachineCamera cameraB;
 
-    public float normalSize = 5f;
-    public float bossSize = 8f;
-    public float zoomSpeed = 3f;
-
-    private float targetSize;
-
-    void Start()
+    public void ActivateCameraB()
     {
-        targetSize = normalSize;
+        cameraB.gameObject.SetActive(true);
+        cameraA.gameObject.SetActive(false);
     }
 
-    void Update()
+    public void ActivateCameraA()
     {
-        var lens = vcam.Lens;
-
-        lens.OrthographicSize = Mathf.Lerp(
-            lens.OrthographicSize,
-            targetSize,
-            Time.deltaTime * zoomSpeed
-        );
-
-        vcam.Lens = lens;
-    }
-
-    public void SetBossZoom()
-    {
-        targetSize = bossSize;
-    }
-
-    public void ResetZoom()
-    {
-        targetSize = normalSize;
+        cameraA.gameObject.SetActive(true);
+        cameraB.gameObject.SetActive(false);
     }
 }

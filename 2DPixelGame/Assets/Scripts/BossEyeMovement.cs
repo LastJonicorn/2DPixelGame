@@ -1,3 +1,5 @@
+using Unity.Cinemachine;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class BossEyeMovement : MonoBehaviour
@@ -45,6 +47,8 @@ public class BossEyeMovement : MonoBehaviour
     private State currentState = State.Chase;
 
     private BossHealthBar healthBar;
+    public CinemachineCamera cameraA;
+    public CinemachineCamera cameraB;
 
     void Start()
     {
@@ -76,6 +80,15 @@ public class BossEyeMovement : MonoBehaviour
                 healthBar.Hide();
         }
 
+        if (playerInside && cameraA != null && cameraB != null)
+        {
+            ActivateCameraB();
+        }
+        else
+        {
+            ActivateCameraA();
+        }
+
         if (movementBounds != null && !movementBounds.bounds.Contains(player.position))
             return;
 
@@ -95,6 +108,17 @@ public class BossEyeMovement : MonoBehaviour
         }
 
         ClampToBounds();
+    }
+    public void ActivateCameraB()
+    {
+        cameraB.gameObject.SetActive(true);
+        cameraA.gameObject.SetActive(false);
+    }
+
+    public void ActivateCameraA()
+    {
+        cameraA.gameObject.SetActive(true);
+        cameraB.gameObject.SetActive(false);
     }
 
     void HandleChase()
@@ -249,6 +273,8 @@ public class BossEyeMovement : MonoBehaviour
 
     public void Die()
     {
+        ActivateCameraA();
+
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb != null)
         {
