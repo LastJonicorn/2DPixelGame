@@ -72,6 +72,11 @@ public class BossEyeMovement : MonoBehaviour
 
         bool playerInside = movementBounds.bounds.Contains(player.position);
 
+        if (playerInside)
+        {
+            Events.OnDoorEvent?.Invoke("TrapDoor");
+        }
+
         if (healthBar != null)
         {
             if (playerInside)
@@ -303,7 +308,8 @@ public class BossEyeMovement : MonoBehaviour
         isDead = true;
 
         healthBar.Hide();
-        Events.OnBossDeath?.Invoke();
+
+        Events.OnDoorEvent?.Invoke("BossDoor");
 
         this.enabled = false; // lopettaa Update kokonaan
     }

@@ -2,22 +2,34 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
+    public string doorID;
     public Animator animator;
+
     private bool isOpen;
 
     void OnEnable()
     {
-        Events.OnBossDeath += OpenDoor;
+        Events.OnDoorEvent += HandleDoorEvent;
     }
 
     void OnDisable()
     {
-        Events.OnBossDeath -= OpenDoor;
+        Events.OnDoorEvent -= HandleDoorEvent;
     }
 
-    void OpenDoor()
+    void HandleDoorEvent(string id)
+    {
+        if (isOpen) return;
+
+        if (id != doorID) return;
+
+        Open();
+    }
+
+    public void Open()
     {
         isOpen = true;
+
         animator.SetTrigger("Open");
     }
 }
