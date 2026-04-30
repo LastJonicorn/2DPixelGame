@@ -234,8 +234,28 @@ public class BossEyeMovement : MonoBehaviour
     {
         if (player == null) return;
 
-        // 🔥 SUUNTA POIS PELAAJASTA
-        knockbackDirection = ((Vector2)transform.position - (Vector2)player.position).normalized;
+        Vector2 dir = (Vector2)transform.position - (Vector2)player.position;
+
+        float verticalDiff = player.position.y - transform.position.y;
+
+        // 🔥 JOS PELAAJA YLÄPUOLELLA → pakota sivulle
+        if (verticalDiff > 0.5f)
+        {
+            float horizontalDir = Mathf.Sign(dir.x);
+
+            // jos ollaan suoraan päällä → valitse random suunta
+            if (Mathf.Abs(horizontalDir) < 0.1f)
+            {
+                horizontalDir = Random.value > 0.5f ? 1f : -1f;
+            }
+
+            knockbackDirection = new Vector2(horizontalDir, 0.2f).normalized;
+        }
+        else
+        {
+            // normaali knockback
+            knockbackDirection = dir.normalized;
+        }
 
         knockbackTimer = knockbackDuration;
     }
