@@ -1,80 +1,94 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class LockedDoor : MonoBehaviour
 {
+    public int sceneIndex;
+
+    [Header("Keys")]
     public int requiredKeys = 3;
 
     [Header("UI")]
-    public GameObject keyUIPanel;
-    public TMP_Text keyText;
+    public GameObject prompt;
+    public TMP_Text promptText;
 
-    [Header("Door")]
+    [Header("Door (optional)")]
     public Animator animator;
 
-    private bool playerInside = false;
-    private bool isOpen = false;
+    private bool playerInZone = false;
+    private bool isUnlocked = false;
 
     void Update()
     {
-        if (!playerInside || isOpen) return;
+        if (!playerInZone) return;
 
-        // päivitä UI jatkuvasti
         UpdateUI();
 
-        // Submit = esim E / A nappi
         if (Input.GetButtonDown("Submit"))
         {
-            TryOpen();
+            TryEnter();
         }
     }
 
     void UpdateUI()
     {
         int currentKeys = GameManager.instance.keys;
-        keyText.text = $"Keys {currentKeys}/{requiredKeys}";
-    }
-
-    void TryOpen()
-    {
-        int currentKeys = GameManager.instance.keys;
 
         if (currentKeys >= requiredKeys)
         {
-            Open();
+            isUnlocked = true;
+
+            promptText.text = $"Keys needed {currentKeys}/{requiredKeys}";
+            promptText.color = Color.green;
         }
         else
         {
-            Debug.Log("Not enough keys!");
-            // myöhemmin: shake UI / sound
+            isUnlocked = false;
+
+            promptText.text = $"Keys needed {currentKeys}/{requiredKeys}";
+            promptText.color = Color.red;
         }
     }
 
-    void Open()
+    void TryEnter()
     {
-        isOpen = true;
+        if (!isUnlocked)
+        {
+            Debug.Log("Not enough keys!");
+            return;
+        }
 
-        animator.SetTrigger("Open");
+        // 🔥 avaa ovi (jos on animaatio)
+        if (animator != null)
+        {
+            animator.SetTrigger("Open");
+        }
 
-        GetComponent<Collider2D>().enabled = false;
-        keyUIPanel.SetActive(false);
+        // 🔥 siirry sceneen
+        SaveSystem.SaveGame();
+        FadeManager.instance.FadeToScene(sceneIndex);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D player)
     {
-        if (!collision.CompareTag("Player")) return;
+        if (!player.CompareTag("Player")) return;
 
-        playerInside = true;
-        keyUIPanel.SetActive(true);
+        playerInZone = true;
+
+        if (prompt != null)
+            prompt.SetActive(true);
 
         UpdateUI();
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    private void OnTriggerExit2D(Collider2D player)
     {
-        if (!collision.CompareTag("Player")) return;
+        if (!player.CompareTag("Player")) return;
 
-        playerInside = false;
-        keyUIPanel.SetActive(false);
+        playerInZone = false;
+
+        if (prompt != null)
+            prompt.SetActive(false);
     }
 }
