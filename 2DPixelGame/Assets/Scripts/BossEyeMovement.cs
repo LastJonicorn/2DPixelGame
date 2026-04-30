@@ -303,6 +303,7 @@ public class BossEyeMovement : MonoBehaviour
         isDead = true;
 
         healthBar.Hide();
+        Events.OnBossDeath?.Invoke();
 
         this.enabled = false; // lopettaa Update kokonaan
     }
