@@ -2,13 +2,14 @@ using UnityEngine;
 
 public class HeavyAttackEffect : MonoBehaviour
 {
-    public int damage = 20;
+    public int heavyAttackDamage;
     public LayerMask enemyLayers;
 
     public float lifetime = 2f;
 
     private void Start()
     {
+        heavyAttackDamage = GameManager.instance.heavyAttackPower;
         Destroy(gameObject, lifetime);
     }
 
@@ -20,7 +21,7 @@ public class HeavyAttackEffect : MonoBehaviour
         Enemy enemy = collision.GetComponent<Enemy>();
         if (enemy != null)
         {
-            enemy.TakeDamage(damage);
+            enemy.TakeDamage(heavyAttackDamage);
         }
     }
 }

@@ -10,8 +10,10 @@ public class GameManager : MonoBehaviour
     public int maxHealth = 100;
 
     public int orbs = 0;
+    public int keys = 0;
 
     public int attackPower = 20;
+    public int heavyAttackPower = 25;
 
     public int level = 1;
     public int exp = 0;
@@ -100,7 +102,7 @@ public class GameManager : MonoBehaviour
         exp -= expToNextLevel;
         level++;
 
-        expToNextLevel += 50; // optional scaling
+        expToNextLevel += 75; // optional scaling
 
         // resettaa resurssit
         playerHealth = maxHealth;
@@ -146,8 +148,10 @@ public class GameManager : MonoBehaviour
         expToNextLevel = data.expToNextLevel;
 
         attackPower = data.attackPower;
+        heavyAttackPower = data.heavyAttackPower;
 
         orbs = data.orbs;
+        keys = data.keys;
 
         respawnPosition = new Vector2(data.posX, data.posY + 2.0f);
         hasCheckpoint = true;
@@ -197,8 +201,10 @@ public class GameManager : MonoBehaviour
         playerMana = maxMana;
 
         orbs = 0;
+        keys = 0;
 
         attackPower = 20;
+        heavyAttackPower = 25;
 
         level = 1;
         exp = 0;

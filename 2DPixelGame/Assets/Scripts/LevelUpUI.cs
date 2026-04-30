@@ -40,6 +40,7 @@ public class LevelUpUI : MonoBehaviour
     public void AddAttack()
     {
         GameManager.instance.attackPower += 5;
+        GameManager.instance.heavyAttackPower += 5;
 
         Sync();
         Close();

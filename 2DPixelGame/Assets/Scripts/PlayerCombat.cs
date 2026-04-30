@@ -19,7 +19,6 @@ public class PlayerCombat : MonoBehaviour
     public GameObject heavyAttackPrefab;
     public Transform[] heavyAttackPoints;
     public float heavyAttackRange = 1f;
-    public int heavyAttackDamage = 80;
 
     [Header("Air Attack")]
     public Transform airAttackPoint;
@@ -34,6 +33,7 @@ public class PlayerCombat : MonoBehaviour
     void Start()
     {
         attackDamage = GameManager.instance.attackPower;
+
         mana = GetComponent<PlayerMana>();
         movement = GetComponent<PlayerMovement>();
         rb = GetComponent<Rigidbody2D>();

@@ -8,8 +8,10 @@ public class SaveData
     public int maxHealth;
 
     public int orbs;
+    public int keys;
 
     public int attackPower;
+    public int heavyAttackPower;
 
     public int level;
     public int exp;

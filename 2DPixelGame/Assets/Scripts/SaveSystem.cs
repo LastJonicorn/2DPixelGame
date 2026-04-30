@@ -16,8 +16,10 @@ public static class SaveSystem
         data.maxHealth = GameManager.instance.maxHealth;
 
         data.attackPower = GameManager.instance.attackPower;
+        data.heavyAttackPower = GameManager.instance.heavyAttackPower;
 
         data.orbs = GameManager.instance.orbs;
+        data.keys = GameManager.instance.keys;
 
         data.level = GameManager.instance.level;
         data.exp = GameManager.instance.exp;
