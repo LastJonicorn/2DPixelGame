@@ -232,6 +232,7 @@ GameObject:
   - component: {fileID: 7637798613823301714}
   - component: {fileID: 1169059184241917903}
   - component: {fileID: 3729946935103631639}
+  - component: {fileID: 1921709317742253574}
   m_Layer: 3
   m_Name: Player
   m_TagString: Player
@@ -581,13 +582,24 @@ MonoBehaviour:
   - {fileID: 2086465561439130379}
   - {fileID: 2993229008039299260}
   heavyAttackRange: 1
-  heavyAttackDamage: 80
   airAttackPoint: {fileID: 4074311062478734748}
   airAttackWidth: 1.5
   airAttackHeight: 1.75
   airAttackInstantiatePoint: {fileID: 587157559106737183}
   airAttackPrefab: {fileID: 0}
   bounceForce: 8
+--- !u!114 &1921709317742253574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1602821586019320682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de33cd8d73a6ca24eac12e83a7882b33, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractions
 --- !u!1 &2486300877562866977
 GameObject:
   m_ObjectHideFlags: 0

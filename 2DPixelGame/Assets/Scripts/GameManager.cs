@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -31,6 +32,8 @@ public class GameManager : MonoBehaviour
     private bool loadingFromSave = false;
 
     public bool inputLocked = false;
+
+    public List<string> openedChests = new List<string>();
 
     private void Awake()
     {
@@ -153,6 +156,8 @@ public class GameManager : MonoBehaviour
         orbs = data.orbs;
         keys = data.keys;
 
+        openedChests = data.openedChests ?? new List<string>();
+
         respawnPosition = new Vector2(data.posX, data.posY + 2.0f);
         hasCheckpoint = true;
 
@@ -210,6 +215,8 @@ public class GameManager : MonoBehaviour
         exp = 0;
         expToNextLevel = 100;
 
-    hasCheckpoint = false;
+        openedChests.Clear();
+
+        hasCheckpoint = false;
     }
 }

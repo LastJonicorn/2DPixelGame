@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 [System.Serializable]
 public class SaveData
 {
@@ -22,4 +24,6 @@ public class SaveData
 
     public int sceneIndex;
     public string sceneName;
+
+    public List<string> openedChests = new List<string>();
 }

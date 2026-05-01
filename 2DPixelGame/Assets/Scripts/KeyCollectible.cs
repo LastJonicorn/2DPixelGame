@@ -23,7 +23,7 @@ public class KeyCollectible : MonoBehaviour
     void Collect()
     {
         GameManager.instance.keys += value;
-
+        SaveSystem.SaveGame();
         //Debug.Log("Orb collected! Total: " + GameManager.instance.orbs);
 
         Destroy(gameObject);

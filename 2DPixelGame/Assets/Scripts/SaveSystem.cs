@@ -20,6 +20,7 @@ public static class SaveSystem
 
         data.orbs = GameManager.instance.orbs;
         data.keys = GameManager.instance.keys;
+        data.openedChests = GameManager.instance.openedChests;
 
         data.level = GameManager.instance.level;
         data.exp = GameManager.instance.exp;
@@ -34,6 +35,27 @@ public static class SaveSystem
         File.WriteAllText(path, json);
 
         Debug.Log("Game saved to: " + path);
+    }
+    public static bool IsChestOpened(string id)
+    {
+        SaveData data = LoadGame();
+
+        if (data == null) return false;
+
+        return data.openedChests.Contains(id);
+    }
+
+    public static void MarkChestOpened(string id)
+    {
+        SaveData data = LoadGame() ?? new SaveData();
+
+        if (!data.openedChests.Contains(id))
+        {
+            data.openedChests.Add(id);
+        }
+
+        string json = JsonUtility.ToJson(data, true);
+        File.WriteAllText(path, json);
     }
 
     public static SaveData LoadGame()
