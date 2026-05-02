@@ -346,7 +346,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   attackDamage: 20
-  attackCooldown: 2
+  attackCooldown: 0.5
   audioSource: {fileID: 4457786657267107008}
   hurtSound: {fileID: 8300000, guid: 008e4217ac6a4cb48976c524b0072a00, type: 3}
   deathSound: {fileID: 8300000, guid: b623acc8b1f2ea84082d8ef5f3cfd921, type: 3}

@@ -8,8 +8,15 @@ public class PlayerHealth : MonoBehaviour
     public Image healthBar;
     public Animator animator;
 
+    private Rigidbody2D rb;
+
+    public float knockbackForce = 10f;
+    public float knockbackUpForce = 3f;
+
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+
         // 🔥 HAETAAN AINA GAMEMANAGERISTA
         currentHealth = GameManager.instance.playerHealth;
 
@@ -43,12 +50,14 @@ public class PlayerHealth : MonoBehaviour
         UpdateUI();
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, Vector2 attackerPosition)
     {
         currentHealth -= damage;
         GameManager.instance.playerHealth = currentHealth;
 
         animator.SetTrigger("TakeDamage");
+
+        ApplyKnockback(attackerPosition);
 
         UpdateUI();
 
@@ -56,6 +65,15 @@ public class PlayerHealth : MonoBehaviour
         {
             Die();
         }
+    }
+    void ApplyKnockback(Vector2 attackerPosition)
+    {
+        float directionX = transform.position.x > attackerPosition.x ? 1f : -1f;
+
+        // Kulma 45 astetta (voit säätää)
+        Vector2 direction = new Vector2(directionX, 1f).normalized;
+
+        rb.linearVelocity = direction * knockbackForce;
     }
 
     public void Die()

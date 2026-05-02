@@ -541,6 +541,8 @@ MonoBehaviour:
   currentHealth: 0
   healthBar: {fileID: 0}
   animator: {fileID: 1903864168718515946}
+  knockbackForce: 10
+  knockbackUpForce: 5
 --- !u!114 &1169059184241917903
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -569,7 +571,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerCombat
   animator: {fileID: 1903864168718515946}
   attackPoint: {fileID: 8368321508490750428}
-  attackRange: 0.74
+  attackRange: 0.9
   enemyLayers:
     serializedVersion: 2
     m_Bits: 128

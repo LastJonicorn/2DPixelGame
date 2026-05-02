@@ -357,7 +357,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3ddd7a8a43a8514dbbaffc0d121fb02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  damagePopupPrefab: {fileID: 4846897064737268408, guid: b0799543220451a42a9af0be064defd9, type: 3}
   animator: {fileID: 3188419713445916938}
   maxHealth: 100
   currentHealth: 0
@@ -367,7 +366,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   attackDamage: 20
-  attackCooldown: 2
+  attackCooldown: 0.5
   audioSource: {fileID: 723370308739529584}
   hurtSound: {fileID: 8300000, guid: 008e4217ac6a4cb48976c524b0072a00, type: 3}
   deathSound: {fileID: 8300000, guid: b623acc8b1f2ea84082d8ef5f3cfd921, type: 3}

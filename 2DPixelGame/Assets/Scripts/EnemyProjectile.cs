@@ -45,7 +45,7 @@ public class EnemyProjectile : MonoBehaviour
             PlayerHealth hp = collision.GetComponent<PlayerHealth>();
             if (hp != null)
             {
-                hp.TakeDamage(damage);
+                hp.TakeDamage(damage, transform.position);
             }
 
             Destroy(gameObject);
