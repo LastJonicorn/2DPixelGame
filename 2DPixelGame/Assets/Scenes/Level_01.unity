@@ -33176,6 +33176,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3699287002184207772, guid: bae529a629335044a8bbdc47d63744f9, type: 3}
   m_PrefabInstance: {fileID: 7440162977205488350}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &555878102 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 361506494018949604, guid: bae529a629335044a8bbdc47d63744f9, type: 3}
+  m_PrefabInstance: {fileID: 7440162977205488350}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI
 --- !u!1 &562385598 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 455284682572275738, guid: bae529a629335044a8bbdc47d63744f9, type: 3}
@@ -95108,6 +95119,7 @@ GameObject:
   - component: {fileID: 1929244381}
   - component: {fileID: 1929244384}
   - component: {fileID: 1929244385}
+  - component: {fileID: 1929244386}
   m_Layer: 0
   m_Name: UIMenuManager
   m_TagString: Untagged
@@ -95186,6 +95198,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelUpUI
   panel: {fileID: 896286070}
   firstButton: {fileID: 527635127}
+--- !u!114 &1929244386
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1929244380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57a0ece3b75b66048af15dcac4715755, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelTitleUI
+  titleText: {fileID: 555878102}
+  fadeDuration: 1
+  showDuration: 2
 --- !u!1 &1932659246
 GameObject:
   m_ObjectHideFlags: 0
@@ -96553,6 +96580,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1929244385}
+    - target: {fileID: 361506494018949604, guid: bae529a629335044a8bbdc47d63744f9, type: 3}
+      propertyPath: m_text
+      value: The Deep Forest
+      objectReference: {fileID: 0}
     - target: {fileID: 764666154313859638, guid: bae529a629335044a8bbdc47d63744f9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -96577,6 +96608,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1929244385}
+    - target: {fileID: 7312487518619260576, guid: bae529a629335044a8bbdc47d63744f9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7893861322188664187, guid: bae529a629335044a8bbdc47d63744f9, type: 3}
       propertyPath: m_text
       value: Floating Eye
