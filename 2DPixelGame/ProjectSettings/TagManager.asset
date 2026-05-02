@@ -67,6 +67,9 @@ TagManager:
   - name: Collectible
     uniqueID: 1326383767
     locked: 0
+  - name: Prompts
+    uniqueID: 1068414319
+    locked: 0
   m_RenderingLayers:
   - Default
   m_MigratedRenderPipelines: []
