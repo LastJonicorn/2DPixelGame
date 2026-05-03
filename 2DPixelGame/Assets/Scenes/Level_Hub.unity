@@ -93993,7 +93993,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec268c11a790cda4da9ad11824cb58e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LockedDoor
-  sceneIndex: 3
+  sceneIndex: 4
   requiredKeys: 3
   prompt: {fileID: 437811907}
   promptText: {fileID: 349826416}
