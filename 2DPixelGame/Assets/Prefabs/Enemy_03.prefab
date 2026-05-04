@@ -46,6 +46,7 @@ GameObject:
   - component: {fileID: 6165558270628878950}
   - component: {fileID: 2092158904212339919}
   - component: {fileID: 2147592406453756767}
+  - component: {fileID: 6506761766270222008}
   m_Layer: 7
   m_Name: Enemy_03
   m_TagString: Untagged
@@ -270,6 +271,26 @@ MonoBehaviour:
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
+--- !u!114 &6506761766270222008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3159560895229722100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c90b832e3e9a7b4689d3e5d959e93f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  detectionDistance: 6
+  dashSpeed: 8
+  dashDuration: 0.5
+  dashCooldown: 2
+  playerLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  animator: {fileID: 3697243746666543055}
 --- !u!1 &3691632023746702899
 GameObject:
   m_ObjectHideFlags: 0
