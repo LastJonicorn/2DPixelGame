@@ -63,7 +63,9 @@ public class GameManager : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        // 🔥 ÄLÄ RESETOI jos tullaan savesta
+        inputLocked = false;
+
+        // ÄLÄ RESETOI jos tullaan savesta
         if (loadingFromSave)
         {
             loadingFromSave = false;

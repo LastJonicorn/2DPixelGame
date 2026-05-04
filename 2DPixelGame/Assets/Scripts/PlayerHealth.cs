@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -70,10 +71,19 @@ public class PlayerHealth : MonoBehaviour
     {
         float directionX = transform.position.x > attackerPosition.x ? 1f : -1f;
 
-        // Kulma 45 astetta (voit säätää)
-        Vector2 direction = new Vector2(directionX, 1f).normalized;
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, 0f);
+        rb.linearVelocity = new Vector2(directionX * knockbackForce, knockbackUpForce);
 
-        rb.linearVelocity = direction * knockbackForce;
+        StartCoroutine(KnockbackLock());
+    }
+
+    IEnumerator KnockbackLock()
+    {
+        GameManager.instance.inputLocked = true;
+
+        yield return new WaitForSeconds(0.2f);
+
+        GameManager.instance.inputLocked = false;
     }
 
     public void Die()

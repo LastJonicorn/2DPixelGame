@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -67,7 +68,13 @@ public class LevelUpUI : MonoBehaviour
         panel.SetActive(false);
         Time.timeScale = 1f;
 
-        GameManager.instance.inputLocked = false;
+        StartCoroutine(EnableMovement());
+    }
 
+    IEnumerator EnableMovement()
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        GameManager.instance.inputLocked = false;
     }
 }
