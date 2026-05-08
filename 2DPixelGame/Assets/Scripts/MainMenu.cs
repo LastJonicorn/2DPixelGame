@@ -10,12 +10,13 @@ public class MainMenu : MonoBehaviour
 
     public GameObject firstButton;
     public GameObject continueButton;
+    public GameObject selectionIndicator;
 
     [Header("Settings Navigation")]
     public GameObject firstSelectedInSettings; // esim. Volume Slider
 
     private GameObject lastSelected;
-
+    public CanvasGroup mainMenuCanvasGroup;
     private void Start()
     {
         bool hasSave = SaveSystem.SaveExists();
@@ -58,10 +59,14 @@ public class MainMenu : MonoBehaviour
 
     public void OpenSettingsPanel()
     {
-        // tallenna nykyinen valinta
         lastSelected = EventSystem.current.currentSelectedGameObject;
 
         settingsPanel.SetActive(true);
+        selectionIndicator.gameObject.SetActive(false);
+
+        // estä main menu navigation
+        mainMenuCanvasGroup.interactable = false;
+        mainMenuCanvasGroup.blocksRaycasts = false;
 
         StartCoroutine(SelectAfterFrame(firstSelectedInSettings));
     }
@@ -69,6 +74,11 @@ public class MainMenu : MonoBehaviour
     public void CloseSettingsPanel()
     {
         settingsPanel.SetActive(false);
+        selectionIndicator.gameObject.SetActive(true);
+
+        // palauta main menu navigation
+        mainMenuCanvasGroup.interactable = true;
+        mainMenuCanvasGroup.blocksRaycasts = true;
 
         GameObject target = lastSelected != null ? lastSelected : firstButton;
 
