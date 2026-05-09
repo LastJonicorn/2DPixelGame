@@ -72,6 +72,23 @@ public class PlayerCombat : MonoBehaviour
     {
         return Time.time >= lastAttackTime + attackCooldown;
     }
+    void DamageEnemy(Collider2D target)
+    {
+        BossRock boss = target.GetComponent<BossRock>();
+
+        if (boss != null)
+        {
+            boss.TakeBossDamage(GameManager.instance.attackPower);
+            return;
+        }
+
+        Enemy enemy = target.GetComponent<Enemy>();
+
+        if (enemy != null)
+        {
+            enemy.TakeDamage(GameManager.instance.attackPower);
+        }
+    }
 
     void Attack()
     {
@@ -84,7 +101,7 @@ public class PlayerCombat : MonoBehaviour
         //Vahingoita vihollista
         foreach(Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<Enemy>().TakeDamage(GameManager.instance.attackPower);
+            DamageEnemy(enemy);
         }
     }
     void HeavyAttack()
@@ -123,7 +140,7 @@ public class PlayerCombat : MonoBehaviour
 
         foreach (Collider2D enemy in hitEnemies)
         {
-            enemy.GetComponent<Enemy>().TakeDamage(GameManager.instance.attackPower);
+            DamageEnemy(enemy);
             hitEnemy = true;
         }
 

@@ -5,6 +5,7 @@ public class Enemy : MonoBehaviour
     EnemyPatrol patrol;
     BossEyeMovement bossMovement;
     EnemyDashAI dashAI;
+    BossVolcano bossVolcano;
 
     [Header("Enemy's Life")]
     public Animator animator;
@@ -34,6 +35,7 @@ public class Enemy : MonoBehaviour
         patrol = GetComponent<EnemyPatrol>();
         bossMovement = GetComponent<BossEyeMovement>();
         dashAI = GetComponent<EnemyDashAI>();
+        bossVolcano = GetComponent<BossVolcano>();
     }
 
     private void Update()
@@ -100,6 +102,11 @@ public class Enemy : MonoBehaviour
         if (dashAI != null)
         {
             dashAI.Die();
+        }
+        BossVolcano bossVolcano = GetComponent<BossVolcano>();
+        if (bossVolcano != null)
+        {
+            bossVolcano.Die();
         }
 
         animator.SetBool("IsDead", true);
