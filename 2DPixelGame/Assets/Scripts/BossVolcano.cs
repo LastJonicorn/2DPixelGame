@@ -155,8 +155,24 @@ public class BossVolcano : MonoBehaviour
 
         StopAllCoroutines();
 
-        Events.OnDoorEvent?.Invoke("BossDoor");
+        BossVolcano[] bosses = FindObjectsByType<BossVolcano>();
 
-        this.enabled = false; // lopettaa Update kokonaan
+        bool anyAlive = false;
+
+        foreach (BossVolcano boss in bosses)
+        {
+            if (boss != this && !boss.isDead)
+            {
+                anyAlive = true;
+                break;
+            }
+        }
+
+        if (!anyAlive)
+        {
+            Events.OnDoorEvent?.Invoke("BossDoor");
+        }
+
+        this.enabled = false;
     }
 }
