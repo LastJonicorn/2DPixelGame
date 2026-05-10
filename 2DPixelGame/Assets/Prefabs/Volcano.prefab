@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3676274064124937352}
   - component: {fileID: 2726604365331277010}
   - component: {fileID: 4242882856971653461}
+  - component: {fileID: 4888934818732862427}
   m_Layer: 7
   m_Name: Volcano
   m_TagString: Untagged
@@ -3738,7 +3739,7 @@ ParticleSystem:
     m_EnergyLossOnCollision:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -4850,3 +4851,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   damage: 10
+--- !u!114 &4888934818732862427
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6175294194494770565}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e174c15c95151841a33196a1324aab0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
