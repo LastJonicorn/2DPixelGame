@@ -198,7 +198,8 @@ MonoBehaviour:
   animator: {fileID: 3852632364851176580}
   maxHealth: 600
   currentHealth: 0
-  attackPoint: {fileID: 2661737607294019814}
+  attackPoints:
+  - {fileID: 2661737607294019814}
   attackRange: 1.7
   playerLayer:
     serializedVersion: 2
@@ -233,6 +234,8 @@ MonoBehaviour:
   projectileCount: 12
   shootCooldown: 3
   shootDelay: 0.5
+  cameraA: {fileID: 0}
+  cameraB: {fileID: 0}
 --- !u!114 &8762596638875198751
 MonoBehaviour:
   m_ObjectHideFlags: 0

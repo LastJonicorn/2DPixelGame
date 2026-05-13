@@ -360,7 +360,8 @@ MonoBehaviour:
   animator: {fileID: 3188419713445916938}
   maxHealth: 100
   currentHealth: 0
-  attackPoint: {fileID: 7656547887005235151}
+  attackPoints:
+  - {fileID: 7656547887005235151}
   attackRange: 0.52
   playerLayer:
     serializedVersion: 2

@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     public int currentHealth;
 
     [Header("Enemy Attack")]
-    public Transform attackPoint;
+    public Transform[] attackPoints;
     public float attackRange = 0.1f;
     public LayerMask playerLayer;
     public int attackDamage = 20;
@@ -48,11 +48,19 @@ public class Enemy : MonoBehaviour
 
     void TryAttack()
     {
-        Collider2D hitPlayer = Physics2D.OverlapCircle(attackPoint.position, attackRange, playerLayer);
-
-        if (hitPlayer != null)
+        foreach (Transform point in attackPoints)
         {
-            Attack(hitPlayer);
+            Collider2D hitPlayer = Physics2D.OverlapCircle(
+                point.position,
+                attackRange,
+                playerLayer
+            );
+
+            if (hitPlayer != null)
+            {
+                Attack(hitPlayer);
+                return; // est‰‰ multi-hitit samalla framella
+            }
         }
     }
 
@@ -133,6 +141,14 @@ public class Enemy : MonoBehaviour
     }
     private void OnDrawGizmosSelected()
     {
-        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
+        if (attackPoints == null) return;
+
+        foreach (Transform point in attackPoints)
+        {
+            if (point != null)
+            {
+                Gizmos.DrawWireSphere(point.position, attackRange);
+            }
+        }
     }
 }
