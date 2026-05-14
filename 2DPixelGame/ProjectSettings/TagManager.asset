@@ -58,11 +58,11 @@ TagManager:
   - name: Top
     uniqueID: 2972084661
     locked: 0
-  - name: Player
-    uniqueID: 3220939285
-    locked: 0
   - name: Bonfire
     uniqueID: 3182693413
+    locked: 0
+  - name: Player
+    uniqueID: 3220939285
     locked: 0
   - name: Collectible
     uniqueID: 1326383767
