@@ -112800,6 +112800,10 @@ PrefabInstance:
       propertyPath: movementBounds
       value: 
       objectReference: {fileID: 1203364685}
+    - target: {fileID: 2312332536762833458, guid: 3e4899c07a394534980bbbdc7739690f, type: 3}
+      propertyPath: projectileCount
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4825956586256092200, guid: 3e4899c07a394534980bbbdc7739690f, type: 3}
       propertyPath: m_Name
       value: Boss_Eye
