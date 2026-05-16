@@ -317,9 +317,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c90b832e3e9a7b4689d3e5d959e93f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  detectionDistance: 6
-  dashSpeed: 5
-  dashDuration: 0.5
+  detectionDistance: 5
+  dashSpeed: 4
+  dashDuration: 0.6
   dashCooldown: 2
   playerLayer:
     serializedVersion: 2

@@ -69025,21 +69025,11 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: -94, y: -17, z: 0}
+  - first: {x: -93, y: -17, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 23
       m_TileSpriteIndex: 23
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: -93, y: -17, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 20
-      m_TileSpriteIndex: 20
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -106278,7 +106268,7 @@ Tilemap:
     m_RefCount: 8
     m_Data: {fileID: 11400000, guid: 3344750a01d4cd5448aff3ae7ab7e32f, type: 2}
   - serializedVersion: 2
-    m_RefCount: 38
+    m_RefCount: 37
     m_Data: {fileID: 11400000, guid: 63fbde5366b976544aa1a68207799449, type: 2}
   - serializedVersion: 2
     m_RefCount: 16
@@ -106351,7 +106341,7 @@ Tilemap:
     m_RefCount: 8
     m_Data: {fileID: 1429322144, guid: 5fadc54417aab3f4f8004cce8fa43ce1, type: 3}
   - serializedVersion: 2
-    m_RefCount: 38
+    m_RefCount: 37
     m_Data: {fileID: -1808350764, guid: 5fadc54417aab3f4f8004cce8fa43ce1, type: 3}
   - serializedVersion: 2
     m_RefCount: 16
@@ -106364,7 +106354,7 @@ Tilemap:
     m_Data: {fileID: -471289430451725424, guid: 5fadc54417aab3f4f8004cce8fa43ce1, type: 3}
   m_TileMatrixArray:
   - serializedVersion: 2
-    m_RefCount: 8649
+    m_RefCount: 8648
     m_Data:
       e00: 1
       e01: 0
@@ -106384,7 +106374,7 @@ Tilemap:
       e33: 1
   m_TileColorArray:
   - serializedVersion: 2
-    m_RefCount: 8649
+    m_RefCount: 8648
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -107047,11 +107037,11 @@ CompositeCollider2D:
         Y: -160624992
       - X: -910625024
         Y: -160000000
-      - X: -939374976
+      - X: -929374976
         Y: -160000000
-      - X: -940000000
+      - X: -930000000
         Y: -160624992
-      - X: -940000000
+      - X: -930000000
         Y: -170000000
       - X: -910000000
         Y: -170000000
@@ -107419,9 +107409,9 @@ CompositeCollider2D:
     - - {x: -91.00003, y: -17}
       - {x: -91.00001, y: -16.06249}
       - {x: -91.062515, y: -16}
-      - {x: -93.93751, y: -16.000008}
-      - {x: -94, y: -16.062511}
-      - {x: -93.99997, y: -17}
+      - {x: -92.93751, y: -16.000008}
+      - {x: -93, y: -16.062511}
+      - {x: -92.99997, y: -17}
     - - {x: -25.000029, y: -62}
       - {x: -24.999971, y: -42}
       - {x: -24, y: -41.999973}
@@ -113251,7 +113241,7 @@ PrefabInstance:
       objectReference: {fileID: 2028725710}
     - target: {fileID: 1271196798361026220, guid: 15f4c8eb6401afc47bbf2bef0037de08, type: 3}
       propertyPath: fireCooldown
-      value: 12
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1271196798361026220, guid: 15f4c8eb6401afc47bbf2bef0037de08, type: 3}
       propertyPath: movementBounds
@@ -113267,7 +113257,7 @@ PrefabInstance:
       objectReference: {fileID: 403109543}
     - target: {fileID: 3496364250800849172, guid: 15f4c8eb6401afc47bbf2bef0037de08, type: 3}
       propertyPath: speed
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3551891693279040090, guid: 15f4c8eb6401afc47bbf2bef0037de08, type: 3}
       propertyPath: maxHealth
@@ -114038,6 +114028,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5257295290563491302}
     - target: {fileID: 1271196798361026220, guid: 15f4c8eb6401afc47bbf2bef0037de08, type: 3}
+      propertyPath: fireCooldown
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1271196798361026220, guid: 15f4c8eb6401afc47bbf2bef0037de08, type: 3}
       propertyPath: movementBounds
       value: 
       objectReference: {fileID: 1662840259}
@@ -114049,6 +114043,10 @@ PrefabInstance:
       propertyPath: fillImage
       value: 
       objectReference: {fileID: 7440162977205488352}
+    - target: {fileID: 3496364250800849172, guid: 15f4c8eb6401afc47bbf2bef0037de08, type: 3}
+      propertyPath: speed
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3551891693279040090, guid: 15f4c8eb6401afc47bbf2bef0037de08, type: 3}
       propertyPath: maxHealth
       value: 900
