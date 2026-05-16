@@ -141,6 +141,14 @@ public class PlayerCombat : MonoBehaviour
         foreach (Collider2D enemy in hitEnemies)
         {
             DamageEnemy(enemy);
+
+            PogoPoint pogo = enemy.GetComponent<PogoPoint>();
+
+            if (pogo != null)
+            {
+                pogo.OnHit();
+            }
+
             hitEnemy = true;
         }
 
