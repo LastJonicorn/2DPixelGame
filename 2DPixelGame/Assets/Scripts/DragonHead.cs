@@ -26,6 +26,7 @@ public class DragonHead : MonoBehaviour
     public Transform attackPoint;
     public GameObject fireballPrefab;
     public Transform fireSpawnPoint;
+    public MonoBehaviour platformScript;
 
     public float idleMoveAmount = 0.3f;
     public float idleSpeed = 1.5f;
@@ -156,8 +157,6 @@ public class DragonHead : MonoBehaviour
 
         ShootFireball();
 
-        yield return new WaitForSeconds(attackCooldown);
-
         nextAttackTime = Time.time + attackCooldown;
         state = State.Idle;
     }
@@ -200,7 +199,10 @@ public class DragonHead : MonoBehaviour
 
         if (!anyAlive)
         {
-            //Platform logiikka
+            if (platformScript != null)
+            {
+                platformScript.enabled = true;
+            }
         }
 
         this.enabled = false;
