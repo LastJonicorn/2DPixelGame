@@ -6,6 +6,7 @@ public class Enemy : MonoBehaviour
     BossEyeMovement bossMovement;
     EnemyDashAI dashAI;
     BossVolcano bossVolcano;
+    DragonHead bossDragon;
 
     [Header("Enemy's Life")]
     public Animator animator;
@@ -36,6 +37,7 @@ public class Enemy : MonoBehaviour
         bossMovement = GetComponent<BossEyeMovement>();
         dashAI = GetComponent<EnemyDashAI>();
         bossVolcano = GetComponent<BossVolcano>();
+        bossDragon = GetComponent<DragonHead>();
     }
 
     private void Update()
@@ -115,6 +117,11 @@ public class Enemy : MonoBehaviour
         if (bossVolcano != null)
         {
             bossVolcano.Die();
+        }
+        DragonHead bossDragon = GetComponent<DragonHead>();
+        if (bossDragon != null)
+        {
+            bossDragon.Die();
         }
 
         animator.SetBool("IsDead", true);
