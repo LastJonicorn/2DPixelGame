@@ -23,6 +23,10 @@ public class GameManager : MonoBehaviour
     public float playerMana = 100;
     public float maxMana = 100;
 
+    [Header("Unlocks")]
+    public bool hasLantern;
+    public bool hasDoubleJump;
+
     public Vector3 respawnPosition;
     public bool hasCheckpoint = false;
     public Checkpoint currentCheckpoint;
@@ -157,6 +161,9 @@ public class GameManager : MonoBehaviour
 
         orbs = data.orbs;
         keys = data.keys;
+
+        hasLantern = data.hasLantern;
+        hasDoubleJump = data.hasDoubleJump;
 
         openedChests = data.openedChests ?? new List<string>();
 

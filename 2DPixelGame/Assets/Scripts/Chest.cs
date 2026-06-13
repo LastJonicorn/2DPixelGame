@@ -36,7 +36,6 @@ public class Chest : MonoBehaviour, IInteractable
 
         SpawnItem();
 
-        // 🔥 TÄMÄ ON AINOA MITÄ TARVITAAN
         GameManager.instance.openedChests.Add(chestID);
 
         Destroy(gameObject, 0.5f);

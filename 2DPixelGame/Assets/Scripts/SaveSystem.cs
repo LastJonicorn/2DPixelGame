@@ -29,6 +29,9 @@ public static class SaveSystem
         data.posX = GameManager.instance.respawnPosition.x;
         data.posY = GameManager.instance.respawnPosition.y;
 
+        data.hasLantern = GameManager.instance.hasLantern;
+        data.hasDoubleJump = GameManager.instance.hasDoubleJump;
+
         data.sceneIndex = UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex;
 
         string json = JsonUtility.ToJson(data, true);

@@ -25,5 +25,8 @@ public class SaveData
     public int sceneIndex;
     public string sceneName;
 
+    public bool hasLantern;
+    public bool hasDoubleJump;
+
     public List<string> openedChests = new List<string>();
 }
