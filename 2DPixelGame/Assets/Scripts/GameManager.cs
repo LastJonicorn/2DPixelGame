@@ -217,6 +217,9 @@ public class GameManager : MonoBehaviour
         orbs = 0;
         keys = 0;
 
+        hasLantern = false;
+        hasDoubleJump = false;
+
         attackPower = 20;
         heavyAttackPower = 25;
 
