@@ -15361,6 +15361,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1929244381}
+    - target: {fileID: 5041104195988022071, guid: bae529a629335044a8bbdc47d63744f9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1929244382}
+    - target: {fileID: 5041104195988022071, guid: bae529a629335044a8bbdc47d63744f9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: QuitGame
+      objectReference: {fileID: 0}
     - target: {fileID: 5175906238698933992, guid: bae529a629335044a8bbdc47d63744f9, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -875
@@ -15369,6 +15377,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1929244382}
+    - target: {fileID: 5497716526505278093, guid: bae529a629335044a8bbdc47d63744f9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadHub
+      objectReference: {fileID: 0}
     - target: {fileID: 5902727978202788919, guid: bae529a629335044a8bbdc47d63744f9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -15393,6 +15405,14 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1929244385}
+    - target: {fileID: 8700112315233090287, guid: bae529a629335044a8bbdc47d63744f9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1929244382}
+    - target: {fileID: 8700112315233090287, guid: bae529a629335044a8bbdc47d63744f9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMenu
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

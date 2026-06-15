@@ -42,6 +42,12 @@ public class PauseMenu : MonoBehaviour
 
     }
 
+    public void LoadHub()
+    {
+        Time.timeScale = 1;
+        FadeManager.instance.FadeToScene(2);
+    }
+
     public void LoadMenu()
     {
         Time.timeScale = 1;
