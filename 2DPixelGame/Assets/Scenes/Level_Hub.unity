@@ -373,6 +373,8 @@ MonoBehaviour:
   promptUI: {fileID: 1011758147}
   shopUI: {fileID: 2069779157}
   firstSelectedButton: {fileID: 2069779158}
+  shopCanvasGroup: {fileID: 2069779161}
+  selectionIndicator: {fileID: 596084949}
 --- !u!61 &84354971
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -85174,6 +85176,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 592189013}
   m_CullTransparentMesh: 1
+--- !u!1 &596084949 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6194717975747442629, guid: 16bee843a4ec15b43bc04ab6761c875c, type: 3}
+  m_PrefabInstance: {fileID: 2069779155}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &596636000
 GameObject:
   m_ObjectHideFlags: 0
@@ -92157,11 +92164,11 @@ RectTransform:
   - {fileID: 323529742}
   - {fileID: 1762264552}
   - {fileID: 522404317}
+  - {fileID: 2069779156}
   - {fileID: 167013674}
   - {fileID: 872796743}
   - {fileID: 789322287}
   - {fileID: 1708992396}
-  - {fileID: 2069779156}
   - {fileID: 111741857}
   - {fileID: 546398817}
   m_Father: {fileID: 0}
@@ -96309,7 +96316,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3517165542678202937, guid: 16bee843a4ec15b43bc04ab6761c875c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 263849957}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8427145952018601251, guid: 16bee843a4ec15b43bc04ab6761c875c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2069779161}
   m_SourcePrefab: {fileID: 100100000, guid: 16bee843a4ec15b43bc04ab6761c875c, type: 3}
 --- !u!224 &2069779156 stripped
 RectTransform:
@@ -96336,6 +96346,18 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 3517165542678202937, guid: 16bee843a4ec15b43bc04ab6761c875c, type: 3}
   m_PrefabInstance: {fileID: 2069779155}
   m_PrefabAsset: {fileID: 0}
+--- !u!225 &2069779161
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2069779157}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2109344330
 GameObject:
   m_ObjectHideFlags: 0

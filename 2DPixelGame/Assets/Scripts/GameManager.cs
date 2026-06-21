@@ -167,10 +167,10 @@ public class GameManager : MonoBehaviour
 
         openedChests = data.openedChests ?? new List<string>();
 
-        respawnPosition = new Vector2(data.posX, data.posY + 1.5f);
+        //respawnPosition = new Vector2(data.posX, data.posY + 1.5f);
         hasCheckpoint = true;
 
-        loadingFromSave = true; // 🔥 TÄRKEÄ
+        loadingFromSave = true;
 
         SceneManager.LoadScene(data.sceneIndex);
     }

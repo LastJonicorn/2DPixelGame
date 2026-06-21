@@ -30,6 +30,9 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1;
         GameIsPaused = false;
+
+        //Fix for the shop bug
+        FindAnyObjectByType<Shop>()?.EnableShopNavigation();
     }
 
     public void Pause()
@@ -38,12 +41,18 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0;
         GameIsPaused = true;
 
+        //Fix for the shop bug
+        FindAnyObjectByType<Shop>()?.DisableShopNavigation();
+
         EventSystem.current.SetSelectedGameObject(firstButton);
 
     }
 
     public void LoadHub()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 2)
+            return;
+
         Time.timeScale = 1;
         FadeManager.instance.FadeToScene(2);
     }

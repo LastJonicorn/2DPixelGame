@@ -11,6 +11,9 @@ public class Shop : MonoBehaviour
     [Header("Navigation")]
     public GameObject firstSelectedButton;
 
+    public CanvasGroup shopCanvasGroup;
+    public GameObject selectionIndicator;
+
     private bool playerInside;
     private bool isOpen;
 
@@ -37,6 +40,9 @@ public class Shop : MonoBehaviour
 
         GameManager.instance.inputLocked = true;
 
+        shopCanvasGroup.interactable = true;
+        shopCanvasGroup.blocksRaycasts = true;
+
         StartCoroutine(SelectAfterFrame(firstSelectedButton));
     }
 
@@ -51,6 +57,29 @@ public class Shop : MonoBehaviour
 
         if (EventSystem.current != null)
             EventSystem.current.SetSelectedGameObject(null);
+    }
+
+    public void DisableShopNavigation()
+    {
+        shopCanvasGroup.interactable = false;
+        shopCanvasGroup.blocksRaycasts = false;
+
+        if (selectionIndicator != null)
+            selectionIndicator.SetActive(false);
+
+        EventSystem.current.SetSelectedGameObject(null);
+    }
+
+
+    public void EnableShopNavigation()
+    {
+        shopCanvasGroup.interactable = true;
+        shopCanvasGroup.blocksRaycasts = true;
+
+        if (selectionIndicator != null)
+            selectionIndicator.SetActive(true);
+
+        StartCoroutine(SelectAfterFrame(firstSelectedButton));
     }
 
     IEnumerator SelectAfterFrame(GameObject obj)
