@@ -14,6 +14,9 @@ public class Shop : MonoBehaviour
     public CanvasGroup shopCanvasGroup;
     public GameObject selectionIndicator;
 
+    [Header("Sold Out")]
+    public GameObject lanternSoldOutSprite;
+
     private bool playerInside;
     private bool isOpen;
 
@@ -29,6 +32,8 @@ public class Shop : MonoBehaviour
             else
                 OpenShop();
         }
+
+        UpdateSoldOut();
     }
 
     void OpenShop()
@@ -57,6 +62,11 @@ public class Shop : MonoBehaviour
 
         if (EventSystem.current != null)
             EventSystem.current.SetSelectedGameObject(null);
+    }
+
+    public void UpdateSoldOut()
+    {
+        lanternSoldOutSprite.SetActive(GameManager.instance.hasLantern);
     }
 
     public void DisableShopNavigation()
